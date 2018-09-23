@@ -1,0 +1,15 @@
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+hook_add = '''
+    let g:airline_theme = 'badwolf'
+    let g:airline#extensions#virtualenv#enabled = 1
+    set laststatus=2
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
