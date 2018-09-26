@@ -12,7 +12,8 @@ set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
 " ヤンクでクリップボードにコピー
-set clipboard=unnamed,autoselect
+set clipboard&
+set clipboard^=unnamedplus
 " 最後のカーソル位置を記憶
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
