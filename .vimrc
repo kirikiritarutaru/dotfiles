@@ -37,9 +37,6 @@ set showmatch
 set laststatus=2
 " コマンドラインの補完
 set wildmode=list:longest
-" 折り返し時に表示行単位での移動できるようにする
-nnoremap j gj
-nnoremap k gk
 
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
@@ -64,7 +61,7 @@ set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 " ESC連打でハイライト解除
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <silent><Esc><Esc> :nohlsearch<CR><Esc>
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
 nnoremap N Nzz
@@ -79,36 +76,48 @@ inoremap jj <Esc>
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
 nnoremap j gj
 nnoremap k gk
+" sudoを忘れた場合に強制的に書き込み
+cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
+" 削除するときにレジスタに入れない
+nnoremap x "_x
+vnoremap x "_x
+nnoremap X "_X
+vnoremap X "_X
+nnoremap s "_s
+vnoremap s "_s
+nnoremap S "_S
+vnoremap S "_S
+" Yで行末までヤンク
+nnoremap Y y$
+" 押しにくいキーをremap
+noremap <Space>h  ^
+noremap <Space>l  $
+nnoremap <Space>/  *
 
 "----------------------------------dein.vim
-if &compatible
+if !&compatible
   set nocompatible
 endif
 
 " Required:
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
-" プラグインがインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
 
 " Required:
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  " Let dein manage dein
   " Required:
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-  "プラグインリストが入っているTOMLファイル
   let g:rc_dir = expand('~/.vim/rc')
   let s:toml = g:rc_dir.'/dein.toml'
   let s:lazy_toml = g:rc_dir. '/dein_lazy.toml'
 
-  " TOMLを読み込み、キャッシュしておく
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy':1})
 
-  " You can specify revision/branch/tag.
   call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
 
   " Required:
@@ -121,7 +130,6 @@ filetype plugin indent on
 syntax enable
 autocmd FileType python setlocal equalprg=autopep8\ - " python code format
 
-" インストールのチェック
 if dein#check_install()
   call dein#install()
 endif
