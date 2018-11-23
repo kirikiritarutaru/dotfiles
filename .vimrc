@@ -61,7 +61,7 @@ set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 " ESC連打でハイライト解除
-nmap <silent><Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <silent><Esc><Esc> :noh<CR>
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
 nnoremap N Nzz
@@ -93,6 +93,8 @@ nnoremap Y y$
 noremap <Space>h  ^
 noremap <Space>l  $
 nnoremap <Space>/  *
+nnoremap ; :
+nnoremap : ;
 
 "----------------------------------dein.vim
 if !&compatible
