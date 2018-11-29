@@ -19,6 +19,8 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
+" spelunker.vim用の設定
+set nospell
 
 " 見た目系
 " 行番号を表示
@@ -27,6 +29,7 @@ set number
 set cursorline
 " 現在の行を強調表示（縦）
 set cursorcolumn
+highlight CursorColumn ctermbg=DarkGray
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
 " インデントはスマートインデント
@@ -95,6 +98,8 @@ noremap <Space>l  $
 nnoremap <Space>/  *
 nnoremap ; :
 nnoremap : ;
+nnoremap <F4> <CR>q:
+nnoremap q: <NOP>
 
 "----------------------------------dein.vim
 if !&compatible
