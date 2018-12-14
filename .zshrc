@@ -1,11 +1,11 @@
 # Set up the prompt
-autoload -U promptinit; promptinit
-#prompt pure
+# autoload -U promptinit; promptinit
+# prompt pure
 
-setopt histignorealldups sharehistory
+# setopt histignorealldups sharehistory
 
 # Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+bindkey -v
 bindkey '^ ' autosuggest-accept
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -14,26 +14,26 @@ SAVEHIST=1000000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
-autoload -U compinit
-compinit
+# autoload -U compinit
+# compinit
 
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
-
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+# zstyle ':completion:*' auto-description 'specify: %d'
+# zstyle ':completion:*' completer _expand _complete _correct _approximate
+# zstyle ':completion:*' format 'Completing %d'
+# zstyle ':completion:*' group-name ''
+# zstyle ':completion:*' menu select=2
+# eval "$(dircolors -b)"
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' list-colors ''
+# zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+# zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+# zstyle ':completion:*' menu select=long
+# zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+# zstyle ':completion:*' use-compctl false
+# zstyle ':completion:*' verbose true
+# 
+# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+# zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # コマンドのスペルミスの指摘
 setopt correct
@@ -54,12 +54,12 @@ setopt share_history
 # 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
 setopt append_history
 
-autoload -U run-help
-autoload run-help-git
-autoload run-help-svn
-autoload run-help-svk
+# autoload -U run-help
+# autoload run-help-git
+# autoload run-help-svn
+# autoload run-help-svk
 # unalias run-help
-alias help=run-help
+# alias help=run-help
 
 alias ez='vi ~/.zshrc'
 alias sz='source ~/.zshrc'
@@ -93,14 +93,13 @@ source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'mafredri/zsh-async', from:github
-zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "chrissicool/zsh-256color"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
+# zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting"
 
@@ -114,3 +113,4 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug load --verbose > /dev/null
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]] && zcompile ~/.zshrc
