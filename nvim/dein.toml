@@ -3,8 +3,19 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
 hook_add = '''
   let g:deoplete#enable_at_startup = 1
+  let g:deoplete#auto_complete_delay = 0
+  let g:deoplete#auto_complete_start_length = 1
+  let g:deoplete#enable_camel_case = 0
+  let g:deoplete#enable_ignore_case = 0
+  let g:deoplete#enable_refresh_always = 0
+  let g:deoplete#enable_smart_case = 1
+  let g:deoplete#file#enable_buffer_path = 1
+  let g:deoplete#max_list = 10000
+  inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+  inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
 '''
 
 [[plugins]]
@@ -18,9 +29,6 @@ repo = 'vim-airline/vim-airline'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -41,14 +49,15 @@ hook_add = '''
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
-[[plugins]] # カラースキーマ
-repo = 'w0ng/vim-hybrid'
-hook_add = '''
-  set background=dark
-  let g:hybrid_custom_term_colors = 1
-  let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-  colorscheme hybrid
-'''
-
 [[plugins]]
 repo = 'terryma/vim-expand-region'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    nnoremap <Space>f :<C-u>NERDTreeToggle<CR>
+    let NERDTreeIgnore = ['\.pyc$']
+'''
