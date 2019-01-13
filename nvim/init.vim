@@ -34,7 +34,7 @@ set number
 set cursorline
 " 現在の行を強調表示（縦）
 set cursorcolumn
-highlight CursorColumn ctermbg=Gray
+highlight CursorColumn ctermbg=DarkGray
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
 " インデントはスマートインデント
@@ -98,6 +98,10 @@ nnoremap S "_S
 vnoremap S "_S
 " Yで行末までヤンク
 nnoremap Y y$
+" ヤンク・ペーストをした後に次の行に移動
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 " 押しにくいキーをremap
 noremap <Space>h  ^
 noremap <Space>l  $
@@ -105,7 +109,6 @@ nnoremap <Space>/  *
 nnoremap ; :
 nnoremap : ;
 nnoremap <F4> <CR>q:
-nnoremap q: <NOP>
 
 "-------dein.vim
 if !&compatible
@@ -125,8 +128,6 @@ if dein#load_state(s:dein_cache_dir)
   " Required:
   call dein#load_toml(s:dein_config_dir . '/dein.toml', {'lazy': 0})
   call dein#load_toml(s:dein_config_dir . '/dein_lazy.toml', {'lazy': 1})
-
-  " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
 
   " Required:
   call dein#end()
