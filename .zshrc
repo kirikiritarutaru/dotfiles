@@ -96,6 +96,7 @@ eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 export XDG_CONFIG_HOME="~/.config"
 export XDG_CACHE_HOME="~/.cache"
+export TERM=tmux-256color
 
 source ~/.zplug/init.zsh
 
