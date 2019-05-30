@@ -1,9 +1,9 @@
 !! ~/.Xresources
- 
+
 !!
 !! rxvt-unicode (urxvt)
 !!
- 
+
 URxvt.geometry:             96x32
 URxvt.scrollBar_right:      true
 URxvt.scrollBar_floating:   true
@@ -14,13 +14,13 @@ URxvt.pointerBlank:         true
 URxvt.visualBell:           false
 URxvt.saveLines:            3000
 URxvt.fading:               40
- 
+
 !! Font list and Spacing
 URxvt.font:                 xft:DejaVu Sans Mono-12,xft:IPAGothic
 !URxvt.font:                 xft:DejaVu Sans Mono-16,xft:IPAGothic
 URxvt.letterSpace:          -1
 !URxvt.lineSpace:            0
- 
+
 !! Color Scheme and Opacity - gruvbox-dark https://github.com/morhetz/gruvbox
 URxvt.depth:                32
 URxvt.color0:               [90]#282828

@@ -24,7 +24,7 @@ ethernet _first_ {
 }
 
 wireless wlp58s0 {
-        format_up = "W: %ip (%quality, %bitrate)"
+        format_up = "W: %ip"
         format_down = "W: down"
 }
 
