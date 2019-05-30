@@ -173,6 +173,7 @@ $execi easystroke &
 $execi xset -dpms
 $execi xset s off
 $execi blueman-applet
+$execi ~/.config/autostart/Enpass.desktop
 
 #specific window settings
 for_window [window_role="pop-up"] floating enable
