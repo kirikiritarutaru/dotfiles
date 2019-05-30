@@ -166,7 +166,7 @@ bar {
 
 $execi fcitx
 # $execi parcellite
-$execi "feh --bg-fill $HOME/.config/i3/wallpaper.jpg"
+$execi "feh --bg-fill ~/dotfiles/i3/wallpaper.jpg"
 # new_window none
 # new_float none
 $execi easystroke &
