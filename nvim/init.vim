@@ -26,6 +26,8 @@ augroup vimrcEx
 augroup END
 " spelunker.vim用の設定
 set nospell
+"コマンドラインモードで補完
+set wildoptions+=pum
 
 " 見た目系
 " 行番号を表示
@@ -99,9 +101,9 @@ vnoremap S "_S
 " Yで行末までヤンク
 nnoremap Y y$
 " ヤンク・ペーストをした後に次の行に移動
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+"vnoremap <silent> y y`]
+"vnoremap <silent> p p`]
+"nnoremap <silent> p p`]
 " 押しにくいキーをremap
 noremap <Space>h  ^
 noremap <Space>l  $
@@ -109,6 +111,28 @@ nnoremap <Space>/  *
 nnoremap ; :
 nnoremap : ;
 nnoremap <F4> <CR>q:
+
+"-------LSP settings
+let g:LanguageClient_serverCommands = {}
+if executable('clangd')
+    let g:LanguageClient_serverCommands['c'] = ['clangd']
+    let g:LanguageClient_serverCommands['cpp'] = ['clangd']
+endif
+
+if executable('pyls')
+    let g:LanguageClient_serverCommands['python'] = ['pyls']
+endif
+
+augroup LanguageClient_config
+    autocmd!
+    autocmd User LanguageClientStarted setlocal signcolumn=yes
+    autocmd User LanguageClientStopped setlocal signcolumn=auto
+augroup END
+
+augroup LCHighlight
+    autocmd!
+    autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
+augroup END
 
 "-------dein.vim
 if !&compatible
