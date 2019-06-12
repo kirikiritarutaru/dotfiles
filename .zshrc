@@ -94,9 +94,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
-export XDG_CONFIG_HOME="~/.config"
-export XDG_CACHE_HOME="~/.cache"
+# export XDG_CONFIG_HOME=~/.config
+# export XDG_CACHE_HOME=~/.cache
 export TERM=tmux-256color
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 source ~/.zplug/init.zsh
 
