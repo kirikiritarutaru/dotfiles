@@ -62,7 +62,7 @@ setopt append_history
 # alias help=run-help
 
 alias ez='nvim ~/.zshrc'
-alias sz='source ~/.zshrc'
+alias l='ls --color=auto'
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
@@ -73,6 +73,9 @@ alias sad='sudo apt update'
 alias sag='sudo apt upgrade -y'
 alias sai='sudo apt install'
 alias sar='sudo apt autoremove'
+alias apup='sudo apt update && sudo apt upgrade -y && sudo apt autoremove'
+# alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove && pyenv update && pip-review -a && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es'
+alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove && pyenv update && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es'
 alias ev='nvim ~/.vimrc'
 alias pi='pip install'
 alias piu='pip install -U'
@@ -80,7 +83,7 @@ alias g='git'
 alias pia='pip-review -a'
 alias et='nvim ~/.tmux.conf'
 alias nv='nvim'
-alias env='nvim ~/.config/nvim/init.vim'
+alias envim='nvim ~/.config/nvim/init.vim'
 
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'

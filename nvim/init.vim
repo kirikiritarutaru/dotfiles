@@ -31,12 +31,12 @@ set wildoptions+=pum
 
 " 見た目系
 " 行番号を表示
-set number
+set relativenumber
 " 現在の行を強調表示
-set cursorline
+" set cursorline
 " 現在の行を強調表示（縦）
-set cursorcolumn
-highlight CursorColumn ctermbg=DarkGray
+" set cursorcolumn
+" highlight CursorColumn ctermbg=DarkGray
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
 " インデントはスマートインデント
