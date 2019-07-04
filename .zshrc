@@ -63,11 +63,10 @@ setopt append_history
 
 alias ez='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
-alias l='ls --color=auto'
+alias l='ls -CF'
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
 alias i3config='sudo -E nvim ~/.config/i3/config'
 # alias pycharm='bash ~/src/pycharm-community-2019.1.1/bin/pycharm.sh &'
 alias sad='sudo apt update'
@@ -86,6 +85,7 @@ alias pia='pip-review -a'
 alias et='nvim ~/.tmux.conf'
 alias nv='nvim'
 alias envim='nvim ~/.config/nvim/init.vim'
+alias unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
 
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
