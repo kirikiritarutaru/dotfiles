@@ -62,6 +62,7 @@ setopt append_history
 # alias help=run-help
 
 alias ez='nvim ~/.zshrc'
+alias sz='source ~/.zshrc'
 alias l='ls --color=auto'
 alias ls='ls --color=auto'
 alias ll='ls -alF'
@@ -74,7 +75,7 @@ alias sag='sudo apt upgrade -y'
 alias sai='sudo apt install'
 alias sar='sudo apt autoremove'
 # alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove && pyenv update && pip-review -a && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es'
-alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove && pyenv update && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es'
+alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && pyenv update && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es'
 alias ev='nvim ~/.vimrc'
 alias pi='pip install'
 alias piu='pip install -U'
