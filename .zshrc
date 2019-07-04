@@ -1,9 +1,3 @@
-# Set up the prompt
-# autoload -U promptinit; promptinit
-# prompt pure
-
-# setopt histignorealldups sharehistory
-
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -v
 bindkey '^ ' autosuggest-accept
@@ -12,10 +6,6 @@ bindkey '^ ' autosuggest-accept
 HISTSIZE=100000
 SAVEHIST=1000000
 HISTFILE=~/.zsh_history
-
-# Use modern completion system
-# autoload -U compinit
-# compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -54,16 +44,7 @@ setopt share_history
 # 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
 setopt append_history
 
-# autoload -U run-help
-# autoload run-help-git
-# autoload run-help-svn
-# autoload run-help-svk
-# unalias run-help
-# alias help=run-help
-
 #------------vcs_info
-# RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
-
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -72,7 +53,6 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
-# RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 RPROMPT='${vcs_info_msg_0_}'
 
 #------------alias
@@ -89,7 +69,6 @@ alias sag='sudo apt upgrade -y'
 alias sai='sudo apt install'
 alias sar='sudo apt autoremove'
 alias aptupd='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
-# alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove && pyenv update && pip-review -a && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es'
 alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && pyenv update && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es && zplug update && ~/.tmux/plugins/tpm/bin/update_plugins all'
 alias ev='nvim ~/.vimrc'
 alias pi='pip install'
