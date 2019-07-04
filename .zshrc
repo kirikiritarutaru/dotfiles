@@ -54,8 +54,8 @@ setopt share_history
 # 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
 setopt append_history
 
-# autoload -U run-help
-# autoload run-help-git
+autoload -U run-help
+autoload run-help-git
 # autoload run-help-svn
 # autoload run-help-svk
 # unalias run-help
