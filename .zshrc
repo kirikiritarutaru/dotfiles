@@ -54,13 +54,27 @@ setopt share_history
 # 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
 setopt append_history
 
-autoload -U run-help
-autoload run-help-git
+# autoload -U run-help
+# autoload run-help-git
 # autoload run-help-svn
 # autoload run-help-svk
 # unalias run-help
 # alias help=run-help
 
+#------------vcs_info
+RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
+
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+
+#------------alias
 alias ez='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias l='ls -CF'
@@ -92,6 +106,7 @@ alias unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
 
+#------------export
 export LANGUAGE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
@@ -107,6 +122,7 @@ export TERM=tmux-256color
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+#------------zplug
 source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
