@@ -104,10 +104,12 @@ nnoremap Y y$
 noremap <Leader>h  ^
 noremap <Leader>l  $
 nnoremap <Leader>/  *
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+noremap ; :
+noremap : ;
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap ; :
+" vnoremap : ;
 nnoremap <F4> <CR>q:
 
 " タブページを使いやすいようにリマップ
