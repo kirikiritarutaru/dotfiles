@@ -69,6 +69,8 @@ set incsearch
 set wrapscan
 " 検索語をハイライト表示
 set hlsearch
+
+"---------マッピング
 " ESC連打でハイライト解除
 nnoremap <silent><Esc><Esc> :noh<CR>
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
@@ -86,9 +88,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
 nnoremap j gj
 nnoremap k gk
-" sudoを忘れた場合に強制的に書き込み
-" neovimだと動かない？
-" cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 " 削除するときにレジスタに入れない
 nnoremap x "_x
 vnoremap x "_x
@@ -100,17 +99,21 @@ nnoremap S "_S
 vnoremap S "_S
 " Yで行末までヤンク
 nnoremap Y y$
-" ヤンク・ペーストをした後に次の行に移動
-"vnoremap <silent> y y`]
-"vnoremap <silent> p p`]
-"nnoremap <silent> p p`]
+
 " 押しにくいキーをremap
-noremap <Space>h  ^
-noremap <Space>l  $
-nnoremap <Space>/  *
+noremap <Leader>h  ^
+noremap <Leader>l  $
+nnoremap <Leader>/  *
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 nnoremap <F4> <CR>q:
+
+" タブページを使いやすいようにリマップ
+nnoremap <C-H> :tabprevious<CR>
+nnoremap <C-L> :tabnext<CR>
+nnoremap <Leader>n :tabnew<Space>
 
 "-------LSP settings
 let g:LanguageClient_serverCommands = {}
