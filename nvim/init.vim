@@ -85,6 +85,10 @@ nnoremap g# g#zz
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+" vim-gitgutter用の設定
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
 nnoremap j gj
 nnoremap k gk
@@ -104,10 +108,12 @@ nnoremap Y y$
 noremap <Leader>h  ^
 noremap <Leader>l  $
 nnoremap <Leader>/  *
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+noremap ; :
+noremap : ;
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap ; :
+" vnoremap : ;
 nnoremap <F4> <CR>q:
 
 " タブページを使いやすいようにリマップ
