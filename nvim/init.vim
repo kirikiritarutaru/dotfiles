@@ -111,9 +111,13 @@ vnoremap : ;
 nnoremap <F4> <CR>q:
 
 " タブページを使いやすいようにリマップ
-nnoremap <C-H> :tabprevious<CR>
-nnoremap <C-L> :tabnext<CR>
+nnoremap <silent> <C-H> :tabprevious<CR>
+nnoremap <silent> <C-L> :tabnext<CR>
 nnoremap <Leader>n :tabnew<Space>
+
+" バッファを使いやすいようにリマップ
+nnoremap <silent> <Leader>k :bprev<CR>
+nnoremap <silent> <Leader>j :bnext<CR>
 
 "-------LSP settings
 let g:LanguageClient_serverCommands = {}
