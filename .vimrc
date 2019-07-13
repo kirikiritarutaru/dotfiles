@@ -1,4 +1,6 @@
 " setting
+" Leaderのマッピング
+let mapleader = "\<Space>"
 "文字コードをUFT-8に設定
 set fenc=utf-8
 " バックアップファイルを作らない
@@ -62,6 +64,8 @@ set incsearch
 set wrapscan
 " 検索語をハイライト表示
 set hlsearch
+
+"----------------------------------マッピング
 " ESC連打でハイライト解除
 nnoremap <silent><Esc><Esc> :noh<CR>
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
@@ -72,11 +76,6 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" vim-expand-region用の設定
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-"マクロおよびキー設定
 " 入力モード中に素早くjjと入力した場合はESCとみなす
 inoremap jj <Esc>
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
@@ -96,13 +95,16 @@ vnoremap S "_S
 " Yで行末までヤンク
 nnoremap Y y$
 " 押しにくいキーをremap
-noremap <Space>h  ^
-noremap <Space>l  $
-nnoremap <Space>/  *
-nnoremap ; :
-nnoremap : ;
+noremap <Leader>h  ^
+noremap <Leader>l  $
+nnoremap <Leader>/  *
+noremap ; :
+noremap : ;
 nnoremap <F4> <CR>q:
-nnoremap q: <NOP>
+
+" vim-expand-region用の設定
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " タブページを使いやすいようにリマップ
 nnoremap <silent> <C-H> :tabprevious<CR>

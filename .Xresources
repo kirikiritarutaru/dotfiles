@@ -14,6 +14,8 @@ URxvt.pointerBlank:         true
 URxvt.visualBell:           false
 URxvt.saveLines:            3000
 URxvt.fading:               40
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 !! Font list and Spacing
 ! URxvt.font:                 xft:DejaVu Sans Mono-12,xft:IPAGothic
