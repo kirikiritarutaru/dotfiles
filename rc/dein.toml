@@ -6,7 +6,7 @@ on_i = 1
 repo = 'vim-airline/vim-airline'
 depends = ['vim-airline-themes']
 hook_add = '''
-    let g:airline_theme = 'badwolf'
+    let g:airline_powerline_fonts = 1
     let g:airline#extensions#virtualenv#enabled = 1
     set laststatus=2
 '''
@@ -19,3 +19,29 @@ repo = 'Yggdroot/indentLine'
 
 [[plugins]]
 repo = 'vim-scripts/fcitx.vim'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+hook_add = '''
+    nnoremap <silent> <Leader>w :FixWhitespace<CR>
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  nnoremap <Leader>f :<C-u>NERDTreeToggle<CR>
+  let NERDTreeIgnore = ['\.pyc$']
+  let g:NERDTreeQuitOnOpen=1
+  let g:NERDTreeShowHidden=1
+  let g:NERDTreeIgnore=['\.git$', '\.clean$', '\.swp$', '\.bak$', '\~$']
+'''
