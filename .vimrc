@@ -24,12 +24,12 @@ set nospell
 
 " 見た目系
 " 行番号を表示
-set number
+set relativenumber
 " 現在の行を強調表示
-set cursorline
+" set cursorline
 " 現在の行を強調表示（縦）
-set cursorcolumn
-highlight CursorColumn ctermbg=DarkGray
+" set cursorcolumn
+" highlight CursorColumn ctermbg=DarkGray
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
 " インデントはスマートインデント
@@ -51,7 +51,6 @@ set tabstop=2
 " 行頭でのTab文字の表示幅
 set shiftwidth=2
 
-
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase
@@ -72,6 +71,10 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+
+" vim-expand-region用の設定
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 "マクロおよびキー設定
 " 入力モード中に素早くjjと入力した場合はESCとみなす
@@ -100,6 +103,15 @@ nnoremap ; :
 nnoremap : ;
 nnoremap <F4> <CR>q:
 nnoremap q: <NOP>
+
+" タブページを使いやすいようにリマップ
+nnoremap <silent> <C-H> :tabprevious<CR>
+nnoremap <silent> <C-L> :tabnext<CR>
+nnoremap <Leader>n :tabnew<Space>
+
+" バッファを使いやすいようにリマップ
+nnoremap <silent> <Leader>k :bprev<CR>
+nnoremap <silent> <Leader>j :bnext<CR>
 
 "----------------------------------dein.vim
 if !&compatible
