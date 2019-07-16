@@ -44,7 +44,7 @@ set showmatch
 " ステータスラインを常に表示
 set laststatus=2
 " コマンドラインの補完
-set wildmode=list:longest
+" set wildmode=list:longest
 
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
