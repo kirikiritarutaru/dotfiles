@@ -26,8 +26,6 @@ augroup vimrcEx
 augroup END
 " spelunker.vim用の設定
 set nospell
-"コマンドラインモードで補完
-set wildoptions+=pum
 
 " 見た目系
 " 行番号を表示
@@ -46,7 +44,7 @@ set showmatch
 " ステータスラインを常に表示
 set laststatus=2
 " コマンドラインの補完
-set wildmode=list:longest
+" set wildmode=list:longest
 
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
