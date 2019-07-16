@@ -1,4 +1,4 @@
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
+let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
 let g:python_host_prog = ''
 
 " setting
@@ -26,8 +26,6 @@ augroup vimrcEx
 augroup END
 " spelunker.vim用の設定
 set nospell
-"コマンドラインモードで補完
-set wildoptions+=pum
 
 " 見た目系
 " 行番号を表示
@@ -155,8 +153,8 @@ endif
 " Required:
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
-let s:dein_cache_dir = $XDG_CACHE_HOME . '/dein'
-let s:dein_config_dir = $XDG_CONFIG_HOME . '/nvim'
+let s:dein_cache_dir = '~/.cache/dein'
+let s:dein_config_dir = '~/.config/nvim'
 
 " Required:
 if dein#load_state(s:dein_cache_dir)
