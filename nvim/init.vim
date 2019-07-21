@@ -104,9 +104,9 @@ vnoremap S "_S
 nnoremap Y y$
 
 " 押しにくいキーをremap
-noremap <Leader>h  ^
-noremap <Leader>l  $
-nnoremap <Leader>/  *
+nnoremap <silent> <Leader>h  ^
+nnoremap <silent> <Leader>l  $
+nnoremap <silent> <Leader>/  *
 noremap ; :
 noremap : ;
 " nnoremap ; :
