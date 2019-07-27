@@ -109,10 +109,6 @@ nnoremap <silent> <Leader>l  $
 nnoremap <silent> <Leader>/  *
 noremap ; :
 noremap : ;
-" nnoremap ; :
-" nnoremap : ;
-" vnoremap ; :
-" vnoremap : ;
 nnoremap <F4> <CR>q:
 
 " タブページを使いやすいようにリマップ
