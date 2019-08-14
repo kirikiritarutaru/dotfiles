@@ -45,15 +45,15 @@ setopt share_history
 setopt append_history
 
 #------------vcs_info
-# autoload -Uz vcs_info
-# setopt prompt_subst
-# zstyle ':vcs_info:git:*' check-for-changes true
-# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-# zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-# zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-# zstyle ':vcs_info:*' actionformats '[%b|%a]'
-# precmd () { vcs_info }
-# RPROMPT='${vcs_info_msg_0_}'
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+RPROMPT='${vcs_info_msg_0_}'
 
 #------------alias
 alias ez='nvim ~/.zshrc'
@@ -63,7 +63,6 @@ alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias i3config='sudo -E nvim ~/.config/i3/config'
-# alias pycharm='bash ~/src/pycharm-community-2019.1.1/bin/pycharm.sh &'
 alias sad='sudo apt update'
 alias sag='sudo apt upgrade -y'
 alias sai='sudo apt install'
