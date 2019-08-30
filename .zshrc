@@ -75,6 +75,7 @@ alias piu='pip install -U'
 alias g='git'
 alias gaa='git add --all'
 alias gcm='git commit -m'
+alias gac='git add --all && git commit -m'
 alias gp='git push'
 # alias pia='pip-review -a'
 alias pia='pip-review -a && pi chainer python-language-server gym'
@@ -82,9 +83,23 @@ alias et='nvim ~/.tmux.conf'
 alias nv='nvim'
 alias envim='nvim ~/.config/nvim/init.vim'
 alias unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
+alias rc='ranger-cd'
 
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
+
+#------------ranger
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
+
+bindkey -s '^o' 'ranger-cd^M'
 
 #------------export
 export LANGUAGE=ja_JP.UTF-8
