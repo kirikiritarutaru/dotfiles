@@ -101,6 +101,14 @@ function ranger-cd {
 
 bindkey -s '^o' 'ranger-cd^M'
 
+#----- fzf
+function select-history() {
+ BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+ CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
 #------------export
 export LANGUAGE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8

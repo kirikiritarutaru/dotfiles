@@ -90,4 +90,7 @@ hook_add = '''
 repo = "tpope/vim-fugitive"
 
 [[plugins]]
+repo = "simeji/winresizer"
+
+[[plugins]]
 repo = "jacquesbh/vim-showmarks"
