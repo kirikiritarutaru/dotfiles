@@ -21,8 +21,6 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
-" spelunker.vim用の設定
-set nospell
 
 " 見た目系
 " 行番号を表示
@@ -54,9 +52,9 @@ set tabstop=2
 set shiftwidth=2
 
 " 検索系
-" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索
 set ignorecase
-" 検索文字列に大文字が含まれている場合は区別して検索する
+" 検索文字列に大文字が含まれている場合は区別して検索
 set smartcase
 " 検索文字列入力時に順次対象文字列にヒットさせる
 set incsearch
@@ -65,9 +63,10 @@ set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 
-"----------------------------------マッピング
+"---------マッピング
 " ESC連打でハイライト解除
 nnoremap <silent><Esc><Esc> :noh<CR>
+
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
 nnoremap N Nzz
@@ -78,22 +77,23 @@ nnoremap g# g#zz
 
 " 入力モード中に素早くjjと入力した場合はESCとみなす
 inoremap jj <Esc>
+
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
 nnoremap j gj
 nnoremap k gk
+
 " sudoを忘れた場合に強制的に書き込み
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
+
 " 削除するときにレジスタに入れない
 nnoremap x "_x
 vnoremap x "_x
 nnoremap X "_X
 vnoremap X "_X
-nnoremap s "_s
-vnoremap s "_s
-nnoremap S "_S
-vnoremap S "_S
+
 " Yで行末までヤンク
 nnoremap Y y$
+
 " 押しにくいキーをremap
 noremap <Leader>h  ^
 noremap <Leader>l  $
@@ -115,7 +115,11 @@ nnoremap <Leader>n :tabnew<Space>
 nnoremap <silent> <Leader>k :bprev<CR>
 nnoremap <silent> <Leader>j :bnext<CR>
 
-" vim-showmarks の設定 --------------------------
+" Leader+bで単語のブラウザ検索
+nmap <Leader>b <Plug>(openbrowser-smart-search)
+vmap <Leader>b <Plug>(openbrowser-smart-search)
+
+"------- vim-showmarks settings
 " 基本マップ
 nnoremap [Mark] <Nop>
 nmap m [Mark]
@@ -159,7 +163,7 @@ nnoremap [Mark]n ]`
 " m + b で前のマークへ移動
 nnoremap [Mark]b [`
 
-"----------------------------------dein.vim
+"-------dein.vim
 if !&compatible
   set nocompatible
 endif

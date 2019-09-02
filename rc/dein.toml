@@ -30,14 +30,13 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
 repo = 'terryma/vim-expand-region'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -54,3 +53,6 @@ repo = "simeji/winresizer"
 
 [[plugins]]
 repo = "jacquesbh/vim-showmarks"
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'

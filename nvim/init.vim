@@ -114,8 +114,8 @@ nnoremap <silent> <C-L> :tabnext<CR>
 nnoremap <Leader>n :tabnew<Space>
 
 " バッファを使いやすいようにリマップ
-nnoremap <silent> <C-K> :bprev<CR>
-nnoremap <silent> <C-J> :bnext<CR>
+nnoremap <silent> <Leader>k :bprev<CR>
+nnoremap <silent> <Leader>j :bnext<CR>
 
 " Leader+bで単語のブラウザ検索
 nmap <Leader>b <Plug>(openbrowser-smart-search)
