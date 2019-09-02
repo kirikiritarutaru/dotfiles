@@ -62,6 +62,9 @@ repo = 'terryma/vim-expand-region'
 repo = 'tpope/vim-surround'
 
 [[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
   nnoremap <Leader>f :<C-u>NERDTreeToggle<CR>
@@ -81,16 +84,19 @@ build = 'bash install.sh'
 repo = 'terryma/vim-multiple-cursors'
 
 [[plugins]]
-repo = "airblade/vim-gitgutter"
+repo = 'airblade/vim-gitgutter'
 hook_add = '''
   let g:gitgutter_map_keys = 0
 '''
 
 [[plugins]]
-repo = "tpope/vim-fugitive"
+repo = 'tpope/vim-fugitive'
 
 [[plugins]]
-repo = "simeji/winresizer"
+repo = 'simeji/winresizer'
 
 [[plugins]]
-repo = "jacquesbh/vim-showmarks"
+repo = 'jacquesbh/vim-showmarks'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'

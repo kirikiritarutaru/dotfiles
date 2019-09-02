@@ -24,8 +24,6 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
-" spelunker.vim用の設定
-set nospell
 
 " 見た目系
 " 行番号を表示
@@ -58,9 +56,9 @@ set tabstop=2
 set shiftwidth=2
 
 " 検索系
-" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索
 set ignorecase
-" 検索文字列に大文字が含まれている場合は区別して検索する
+" 検索文字列に大文字が含まれている場合は区別して検索
 set smartcase
 " 検索文字列入力時に順次対象文字列にヒットさせる
 set incsearch
@@ -72,6 +70,7 @@ set hlsearch
 "---------マッピング
 " ESC連打でハイライト解除
 nnoremap <silent><Esc><Esc> :noh<CR>
+
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
 nnoremap N Nzz
@@ -91,15 +90,13 @@ nmap [h <Plug>GitGutterPrevHunk
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
 nnoremap j gj
 nnoremap k gk
+
 " 削除するときにレジスタに入れない
 nnoremap x "_x
 vnoremap x "_x
 nnoremap X "_X
 vnoremap X "_X
-nnoremap s "_s
-vnoremap s "_s
-nnoremap S "_S
-vnoremap S "_S
+
 " Yで行末までヤンク
 nnoremap Y y$
 
@@ -117,10 +114,14 @@ nnoremap <silent> <C-L> :tabnext<CR>
 nnoremap <Leader>n :tabnew<Space>
 
 " バッファを使いやすいようにリマップ
-nnoremap <silent> <Leader>k :bprev<CR>
-nnoremap <silent> <Leader>j :bnext<CR>
+nnoremap <silent> <C-K> :bprev<CR>
+nnoremap <silent> <C-J> :bnext<CR>
 
-" vim-showmarks の設定 --------------------------
+" Leader+bで単語のブラウザ検索
+nmap <Leader>b <Plug>(openbrowser-smart-search)
+vmap <Leader>b <Plug>(openbrowser-smart-search)
+
+"------- vim-showmarks settings
 " 基本マップ
 nnoremap [Mark] <Nop>
 nmap m [Mark]
