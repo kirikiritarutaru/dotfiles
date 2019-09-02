@@ -17,3 +17,25 @@ on_ft = ['python']
 [[plugins]]
 repo = 'tpope/vim-markdown'
 on_ft = ['md']
+
+[[plugins]]
+repo = 'vim-scripts/a.vim'
+on_ft = ['c', 'cpp']
+hook_source = '''
+   nmap <silent> <leader>aa :A<CR>
+   nmap <silent> <leader>at :AT<CR>
+   nmap <silent> <leader>av :AV<CR>
+'''
+
+[[plugins]]
+repo = "rhysd/vim-clang-format"
+on_ft = "cpp"
+hook_add = """
+function! CPPCodeCleanup()
+ let l:lines='all'
+ let g:clang_format_fallback_style = 'Google'
+ :pyf /usr/share/clang/clang-format-3.8/clang-format.py　# 環境によりclang-fomat.pyの場所が違うかもだから調べること
+endfunction
+command! CPPCodeCleanup call CPPCodeCleanup()
+autocmd BufWrite *.{cpp} :CPPCodeCleanup
+"""
