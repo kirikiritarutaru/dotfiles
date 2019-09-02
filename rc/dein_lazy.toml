@@ -49,3 +49,7 @@ hook_add = '''
   let g:jedi#rename_command = "<leader>R"
   autocmd FileType python setlocal completeopt-=preview
 '''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
