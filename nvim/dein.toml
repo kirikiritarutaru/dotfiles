@@ -75,6 +75,18 @@ repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 depends = ['deoplete.nvim']
 build = 'bash install.sh'
+hook_add = '''
+  set hidden
+  let g:LanguageClient_serverCommands = {
+        \ 'cpp': ['clangd'],
+        \ 'python':['pyls']
+        \ }
+  let g:LanguageClient_loadSettings = 1
+  let g:LanguageClient_hasSnippetSupport = 0
+  set completefunc=LanguageClient#complete
+  nnoremap K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap F :call LanguageClient#textDocument_formatting()<CR>
+'''
 
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
