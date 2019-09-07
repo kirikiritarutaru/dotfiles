@@ -85,6 +85,7 @@ alias envim='nvim ~/.config/nvim/init.vim'
 alias unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
 alias rc='ranger-cd'
 alias rmrf='rm -rf'
+alias ide='tmux split-window -h -p 30 && tmux split-window -v'
 
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
