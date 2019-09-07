@@ -167,6 +167,7 @@ nnoremap [Mark]m '
 nnoremap [Mark]n ]`
 " m + b で前のマークへ移動
 nnoremap [Mark]b [`
+nnoremap [Mark]D :delmarks!<CR>
 
 "-------LSP settings
 let g:LanguageClient_serverCommands = {}
