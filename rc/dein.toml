@@ -49,10 +49,10 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = "simeji/winresizer"
+repo = 'simeji/winresizer'
 
 [[plugins]]
-repo = "jacquesbh/vim-showmarks"
+repo = 'jacquesbh/vim-showmarks'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
