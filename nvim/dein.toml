@@ -85,7 +85,9 @@ hook_add = '''
   let g:LanguageClient_hasSnippetSupport = 0
   set completefunc=LanguageClient#complete
   nnoremap K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap F :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <Leader>F :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <Leader>r :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <Leader>d :call LanguageClient#textDocument_definition()<CR>
 '''
 
 [[plugins]]
