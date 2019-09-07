@@ -34,12 +34,17 @@ hook_add = """
 function! CPPCodeCleanup()
  let l:lines='all'
  let g:clang_format_fallback_style = 'Google'
- :pyf /usr/share/clang/clang-format-3.8/clang-format.py　# 環境によりclang-fomat.pyの場所が違うかもだから調べること
+ :pyf /usr/share/clang/clang-format-6.0/clang-format.py
 endfunction
 command! CPPCodeCleanup call CPPCodeCleanup()
-autocmd BufWrite *.{cpp} :CPPCodeCleanup
+autocmd BufWrite *.cpp,*.h,*.cc :CPPCodeCleanup
 """
 
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_ft = ['c', 'cpp']
+depends = ['deoplete.nvim']

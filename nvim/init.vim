@@ -179,27 +179,16 @@ if executable('pyls')
     let g:LanguageClient_serverCommands['python'] = ['pyls']
 endif
 
-augroup LanguageClient_config
-    autocmd!
-    autocmd User LanguageClientStarted setlocal signcolumn=yes
-    autocmd User LanguageClientStopped setlocal signcolumn=auto
-augroup END
+" augroup LanguageClient_config
+"     autocmd!
+"     autocmd User LanguageClientStarted setlocal signcolumn=yes
+"     autocmd User LanguageClientStopped setlocal signcolumn=auto
+" augroup END
 
 augroup LCHighlight
     autocmd!
     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
 augroup END
-
-function LC_maps()
-   if has_key(g:LanguageClient_serverCommands, &filetype)
-       " any keybindings you want, such as ...
-       nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
-       nnoremap <silent> <Leader>lh :call LanguageClient_textDocument_hover()<CR>
-       nnoremap <silent> <Leader>ld :call LanguageClient_textDocument_definition()<CR>
-       nnoremap <silent> <Leader>lr :call LanguageClient_textDocument_rename()<CR>
-       nnoremap <silent> <Leader>lf :call LanguageClient_textDocument_formatting()<CR>
-   endif
-endfunction
 
 "-------dein.vim
 if !&compatible
