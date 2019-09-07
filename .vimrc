@@ -140,6 +140,7 @@ function! s:AutoMarkrement()
     execute 'mark' g:markrement_char[b:markrement_pos]
     echo 'marked' g:markrement_char[b:markrement_pos]
 endfunction
+
 " m + l でマーク一覧を表示/非表示
 let b:mark_exist = 0
 set updatetime=1
@@ -156,6 +157,7 @@ function! s:MarkList()
 endfunction
 nnoremap <silent>[Mark]l :<C-u>PreviewMarks<CR>
 \:<C-u>DoShowMarks<CR> :<C-u>call <SID>MarkList()<CR>
+
 " m + m + 1文字 で指定のマークへ移動
 nnoremap [Mark]m '
 " m + n で次のマークへ移動
@@ -168,16 +170,13 @@ if !&compatible
   set nocompatible
 endif
 
-" Required:
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 let s:dein_dir = expand('~/.cache/dein')
 
-" Required:
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  " Required:
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   let g:rc_dir = expand('~/.vim/rc')
@@ -187,12 +186,10 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy':1})
 
-  " Required:
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
 filetype plugin indent on
 syntax enable
 autocmd FileType python setlocal equalprg=autopep8\ - " python code format

@@ -28,8 +28,8 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = "rhysd/vim-clang-format"
-on_ft = "cpp"
+repo = 'rhysd/vim-clang-format'
+on_ft = 'cpp'
 hook_add = """
 function! CPPCodeCleanup()
  let l:lines='all'
@@ -39,3 +39,7 @@ endfunction
 command! CPPCodeCleanup call CPPCodeCleanup()
 autocmd BufWrite *.{cpp} :CPPCodeCleanup
 """
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'

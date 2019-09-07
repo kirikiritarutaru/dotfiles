@@ -84,8 +84,8 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " vim-gitgutter用の設定
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
 nnoremap j gj
@@ -125,6 +125,7 @@ vmap <Leader>b <Plug>(openbrowser-smart-search)
 " 基本マップ
 nnoremap [Mark] <Nop>
 nmap m [Mark]
+
 " m + s で現在位置をマーク
 if !exists('g:markrement_char')
     let g:markrement_char = [
@@ -142,6 +143,7 @@ function! s:AutoMarkrement()
     execute 'mark' g:markrement_char[b:markrement_pos]
     echo 'marked' g:markrement_char[b:markrement_pos]
 endfunction
+
 " m + l でマーク一覧を表示/非表示
 let b:mark_exist = 0
 set updatetime=1
@@ -158,6 +160,7 @@ function! s:MarkList()
 endfunction
 nnoremap <silent>[Mark]l :<C-u>PreviewMarks<CR>
 \:<C-u>DoShowMarks<CR> :<C-u>call <SID>MarkList()<CR>
+
 " m + m + 1文字 で指定のマークへ移動
 nnoremap [Mark]m '
 " m + n で次のマークへ移動
@@ -203,26 +206,21 @@ if !&compatible
   set nocompatible
 endif
 
-" Required:
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 let s:dein_cache_dir = '~/.cache/dein'
 let s:dein_config_dir = '~/.config/nvim'
 
-" Required:
 if dein#load_state(s:dein_cache_dir)
   call dein#begin(s:dein_cache_dir)
 
-  " Required:
   call dein#load_toml(s:dein_config_dir . '/dein.toml', {'lazy': 0})
   call dein#load_toml(s:dein_config_dir . '/dein_lazy.toml', {'lazy': 1})
 
-  " Required:
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
 filetype plugin indent on
 syntax enable
 autocmd FileType python setlocal equalprg=autopep8\ - " python code format
