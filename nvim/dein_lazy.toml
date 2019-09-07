@@ -22,9 +22,9 @@ on_ft = ['md']
 repo = 'vim-scripts/a.vim'
 on_ft = ['c', 'cpp']
 hook_source = '''
-   nmap <silent> <leader>aa :A<CR>
-   nmap <silent> <leader>at :AT<CR>
-   nmap <silent> <leader>av :AV<CR>
+   nnoremap <silent> <leader>aa :A<CR>
+   nnoremap <silent> <leader>at :AT<CR>
+   nnoremap <silent> <leader>av :AV<CR>
 '''
 
 [[plugins]]
