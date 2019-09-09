@@ -27,7 +27,7 @@ augroup END
 
 " 見た目系
 " 行番号を表示
-set relativenumber
+set number
 " 現在の行を強調表示
 " set cursorline
 " 現在の行を強調表示（縦）
