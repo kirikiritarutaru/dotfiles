@@ -9,8 +9,8 @@ on_ft = ['python']
 [[plugins]]
 repo = 'tell-k/vim-autopep8'
 hook_add = '''
-    let g:autopep8_disable_show_diff=1
-    let g:autopep8_on_save = 1
+  let g:autopep8_disable_show_diff=1
+  let g:autopep8_on_save = 1
 '''
 on_ft = ['python']
 
@@ -22,22 +22,22 @@ on_ft = ['md']
 repo = 'vim-scripts/a.vim'
 on_ft = ['c', 'cpp']
 hook_source = '''
-   nnoremap <silent> <leader>aa :A<CR>
-   nnoremap <silent> <leader>at :AT<CR>
-   nnoremap <silent> <leader>av :AV<CR>
+  nnoremap <silent> <leader>aa :A<CR>
+  nnoremap <silent> <leader>at :AT<CR>
+  nnoremap <silent> <leader>av :AV<CR>
 '''
 
 [[plugins]]
 repo = 'rhysd/vim-clang-format'
 on_ft = 'cpp'
 hook_add = """
-function! CPPCodeCleanup()
- let l:lines='all'
- let g:clang_format_fallback_style = 'Google'
- :pyf /usr/share/clang/clang-format-6.0/clang-format.py
-endfunction
-command! CPPCodeCleanup call CPPCodeCleanup()
-autocmd BufWrite *.cpp,*.h,*.cc :CPPCodeCleanup
+  function! CPPCodeCleanup()
+   let l:lines='all'
+   let g:clang_format_fallback_style = 'Google'
+   :pyf /usr/share/clang/clang-format-6.0/clang-format.py
+  endfunction
+  command! CPPCodeCleanup call CPPCodeCleanup()
+  autocmd BufWrite *.cpp,*.h,*.cc :CPPCodeCleanup
 """
 
 [[plugins]]

@@ -65,7 +65,7 @@ set incsearch
 " 検索時に最後まで行ったら最初に戻る
 set wrapscan
 " 検索語をハイライト表示
-set hlsearch
+set nohlsearch
 
 "---------マッピング
 " ESC連打でハイライト解除
@@ -114,8 +114,8 @@ nnoremap <silent> <C-L> :tabnext<CR>
 nnoremap <Leader>n :tabnew<Space>
 
 " バッファを使いやすいようにリマップ
-nnoremap <silent> <Leader>k :bprev<CR>
-nnoremap <silent> <Leader>j :bnext<CR>
+nnoremap <silent> <Leader>J :bnext<CR>
+nnoremap <silent> <Leader>K :bprev<CR>
 
 "-------LSP settings
 let g:LanguageClient_serverCommands = {}
