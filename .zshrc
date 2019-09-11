@@ -21,7 +21,6 @@ zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
-
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
@@ -86,7 +85,6 @@ alias unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
 alias rc='ranger-cd'
 alias rmrf='rm -rf'
 alias ide='tmux split-window -h -p 30 && tmux split-window -v'
-
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
 
@@ -100,7 +98,6 @@ function ranger-cd {
     fi
     rm -f -- "$tempfile"
 }
-
 bindkey -s '^o' 'ranger-cd^M'
 
 #----- fzf
@@ -129,7 +126,6 @@ export PATH=$PATH:$GOPATH/bin
 
 #------------zplug
 source ~/.zplug/init.zsh
-
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'mafredri/zsh-async', from:github
 zplug "zsh-users/zsh-history-substring-search"
@@ -150,6 +146,5 @@ zplug "zsh-users/zsh-syntax-highlighting"
 # fi
 
 zplug load --verbose > /dev/null
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]] && zcompile ~/.zshrc
