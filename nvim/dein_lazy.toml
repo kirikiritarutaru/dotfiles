@@ -42,7 +42,7 @@ hook_add = """
 
 [[plugins]]
 repo = 'cespare/vim-toml'
-on_ft = 'toml'
+on_ft = ['toml']
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'

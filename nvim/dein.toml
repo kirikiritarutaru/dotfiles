@@ -53,6 +53,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'terryma/vim-expand-region'
+hook_add = '''
+  vmap v <Plug>(expand_region_expand)
+  vmap <C-v> <Plug>(expand_region_shrink)
+'''
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -97,6 +101,8 @@ repo = 'terryma/vim-multiple-cursors'
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
   let g:gitgutter_map_keys = 0
+  nmap ]h <Plug>(GitGutterNextHunk)
+  nmap [h <Plug>(GitGutterPrevHunk)
 '''
 
 [[plugins]]
@@ -166,6 +172,8 @@ hook_add = '''
   vmap <Leader>s <Plug>(easymotion-s2)
   nmap <Leader>j <Plug>(easymotion-j)
   nmap <Leader>k <Plug>(easymotion-k)
+  vmap <Leader>j <Plug>(easymotion-j)
+  vmap <Leader>k <Plug>(easymotion-k)
   nmap g/ <Plug>(easymotion-sn)
   vmap g/ <Plug>(easymotion-sn)
   omap g/ <Plug>(easymotion-tn)
