@@ -49,10 +49,75 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'terryma/vim-multiple-cursors'
+
+[[plugins]]
 repo = 'simeji/winresizer'
 
 [[plugins]]
 repo = 'jacquesbh/vim-showmarks'
+hook_add = '''
+  nnoremap [Mark] <Nop>
+  nmap m [Mark]
+  if !exists('g:markrement_char')
+      let g:markrement_char = [
+      \     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+      \     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+      \ ]
+  endif
+  nnoremap <silent>[Mark]s :<C-u>call <SID>AutoMarkrement()<CR>:DoShowMarks<CR>
+  function! s:AutoMarkrement()
+      if !exists('b:markrement_pos')
+          let b:markrement_pos = 0
+      else
+          let b:markrement_pos = (b:markrement_pos + 1) % len(g:markrement_char)
+      endif
+      execute 'mark' g:markrement_char[b:markrement_pos]
+      echo 'marked' g:markrement_char[b:markrement_pos]
+  endfunction
+  let b:mark_exist = 0
+  set updatetime=1
+  function! s:MarkList()
+    if b:mark_exist == 0
+      let b:mark_exist = 1
+      nnoremap <silent>[Mark]l :<C-u>1PreviewMarks<CR>
+      \:<C-u>NoShowMarks<CR> :<C-u>call <SID>MarkList()<CR>
+    else
+      let b:mark_exist = 0
+      nnoremap <silent>[Mark]l :<C-u>PreviewMarks<CR>
+      \:<C-u>DoShowMarks<CR> :<C-u>call <SID>MarkList()<CR>
+    endif
+  endfunction
+  nnoremap <silent>[Mark]l :<C-u>PreviewMarks<CR>
+  \:<C-u>DoShowMarks<CR> :<C-u>call <SID>MarkList()<CR>
+  nnoremap [Mark]m '
+  nnoremap [Mark]n ]`
+  nnoremap [Mark]b [`
+  nnoremap [Mark]D :<C-u>1PreviewMarks<CR> :delmarks!<CR>
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+hook_add = '''
+  nmap <Leader>b <Plug>(openbrowser-smart-search)
+  vmap <Leader>b <Plug>(openbrowser-smart-search)
+'''
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+  let g:EasyMotion_do_mapping = 1
+  let g:EasyMotion_smartcase = 1
+  let g:EasyMotion_use_upper = 1
+  let g:EasyMotion_enter_jump_first = 1
+  let g:EasyMotion_space_jump_first = 1
+  nmap <Leader>s <Plug>(easymotion-s2)
+  vmap <Leader>s <Plug>(easymotion-s2)
+  nmap <Leader>j <Plug>(easymotion-j)
+  nmap <Leader>k <Plug>(easymotion-k)
+  vmap <Leader>j <Plug>(easymotion-j)
+  vmap <Leader>k <Plug>(easymotion-k)
+  nmap g/ <Plug>(easymotion-sn)
+  vmap g/ <Plug>(easymotion-sn)
+  omap g/ <Plug>(easymotion-tn)
+'''
