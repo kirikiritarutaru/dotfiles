@@ -126,10 +126,10 @@ augroup LanguageClient_config
     autocmd User LanguageClientStopped setlocal signcolumn=auto
 augroup END
 
-augroup LCHighlight
-    autocmd!
-    autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
-augroup END
+" augroup LCHighlight
+"     autocmd!
+"     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
+" augroup END
 
 "-------dein.vim
 if !&compatible
