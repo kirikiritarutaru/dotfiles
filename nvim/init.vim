@@ -120,11 +120,11 @@ if executable('pyls')
     let g:LanguageClient_serverCommands['python'] = ['pyls']
 endif
 
-" augroup LanguageClient_config
-"     autocmd!
-"     autocmd User LanguageClientStarted setlocal signcolumn=yes
-"     autocmd User LanguageClientStopped setlocal signcolumn=auto
-" augroup END
+augroup LanguageClient_config
+    autocmd!
+    autocmd User LanguageClientStarted setlocal signcolumn=yes
+    autocmd User LanguageClientStopped setlocal signcolumn=auto
+augroup END
 
 augroup LCHighlight
     autocmd!
