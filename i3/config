@@ -178,3 +178,4 @@ $execi ~/.config/autostart/Enpass.desktop
 #specific window settings
 for_window [window_role="pop-up"] floating enable
 for_window [class="Matplotlib"] floating enable
+for_window [class="gksqt"] floating enable
