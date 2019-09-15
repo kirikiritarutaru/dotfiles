@@ -1,4 +1,4 @@
-# Use emacs keybindings even if our EDITOR is set to vi
+#------------settings
 bindkey -v
 bindkey '^ ' autosuggest-accept
 
@@ -100,7 +100,7 @@ function ranger-cd {
 }
 bindkey -s '^o' 'ranger-cd^M'
 
-#----- fzf
+#------------fzf
 function select-history() {
  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
  CURSOR=$#BUFFER
