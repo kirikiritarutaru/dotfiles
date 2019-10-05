@@ -95,9 +95,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'terryma/vim-multiple-cursors'
-
-[[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
   let g:gitgutter_map_keys = 0
