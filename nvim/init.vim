@@ -91,6 +91,8 @@ vnoremap X "_X
 
 " Yで行末までヤンク
 nnoremap Y y$
+"ヤンクレジスタからの貼り付け
+nnoremap <Leader>p "0p
 
 " 押しにくいキーをremap
 noremap <silent> <Leader>h  ^
