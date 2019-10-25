@@ -63,6 +63,7 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'tpope/vim-repeat'
+on_idle = 1
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'

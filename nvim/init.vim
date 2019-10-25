@@ -100,6 +100,8 @@ noremap <silent> <Leader>l  $
 noremap <silent> <Leader>/  *
 noremap ; :
 noremap : ;
+vnoremap ; :
+vnoremap : ;
 nnoremap <F4> <CR>q:
 
 " タブページを使いやすいようにリマップ
