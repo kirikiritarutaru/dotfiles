@@ -21,6 +21,7 @@ URxvt.iso14755_52: false
 ! URxvt.font:                 xft:DejaVu Sans Mono-12,xft:IPAGothic
 ! URxvt.font:                 xft:DejaVu Sans Mono-16,xft:IPAGothic
 URxvt.font:                 xft:DejaVu Sans Mono for Powerline-12,xft:IPAGothic
+! URxvt.font:                 xft:Fira Mono for Powerline-12,xft:IPAGothic
 URxvt.letterSpace:          -1
 !URxvt.lineSpace:            0
 
