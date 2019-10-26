@@ -123,6 +123,7 @@ export XDG_CACHE_HOME=~/.cache
 export TERM=tmux-256color
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export EDITOR=vim
 
 #------------zplug
 source ~/.zplug/init.zsh
