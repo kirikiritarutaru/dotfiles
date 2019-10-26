@@ -102,7 +102,7 @@ noremap ; :
 noremap : ;
 vnoremap ; :
 vnoremap : ;
-nnoremap <F4> <CR>q:
+" nnoremap <F4> <CR>q:
 
 " タブページを使いやすいようにリマップ
 nnoremap <silent> <C-H> :tabprevious<CR>
@@ -112,6 +112,24 @@ nnoremap <Leader>n :tabnew<Space>
 " バッファを使いやすいようにリマップ
 nnoremap <silent> <Leader>J :bnext<CR>
 nnoremap <silent> <Leader>K :bprev<CR>
+
+"<F5> でコード実行
+function! Exe()
+  echo "Exe"
+  let filename = expand('%:t')
+  if stridx(filename, ".py") != -1
+    !python %
+  elseif stridx(filename, ".jl") != -1
+    !julia %
+  elseif stridx(filename, ".cpp") != -1
+    !./build_run.sh
+  else
+    echo "unknown filetype"+filename
+  endif
+endfunction
+command! Exe :call Exe()
+
+nnoremap <F4> :Exe<CR>
 
 "-------LSP settings
 let g:LanguageClient_serverCommands = {}
