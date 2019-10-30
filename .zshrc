@@ -7,6 +7,7 @@ HISTSIZE=100000
 SAVEHIST=1000000
 HISTFILE=~/.zsh_history
 
+fpath+=~/.zfunc
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
