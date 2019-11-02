@@ -6,6 +6,8 @@ repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 hook_add = '''
   let g:deoplete#enable_at_startup = 1
+  let g:deoplete#auto_complete_delay = 0
+  let g:deoplete#auto_complete_start_length = 1
   inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
   inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
 '''
@@ -48,7 +50,7 @@ repo = 'cohama/lexima.vim'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 hook_add = '''
-    nnoremap <silent> <Leader>w :FixWhitespace<CR>
+  nnoremap <silent> <Leader>w :FixWhitespace<CR>
 '''
 
 [[plugins]]
