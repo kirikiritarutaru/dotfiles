@@ -44,22 +44,3 @@ on_ft = ['toml']
 repo = 'Shougo/neoinclude.vim'
 on_ft = ['c', 'cpp']
 depends = ['deoplete.nvim']
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-depends = 'context_filetype.vim'
-hook_source = '''
-" source ~/.config/nvim/plugins/neosnippet.rc.vim
-  let g:neosnippet#enable_snipmate_compatibility = 1
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
-  if has('conceal')
-      set conceallevel=2 concealcursor=niv
-  endif
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'

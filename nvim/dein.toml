@@ -76,8 +76,8 @@ hook_add = '''
   "-------LSP settings
   set hidden
   let g:LanguageClient_serverCommands = {
-        \ 'cpp':['clangd'],
         \ 'python':['pyls'],
+        \ 'cpp':['clangd'],
         \}
 
   augroup LanguageClient_config
@@ -88,14 +88,11 @@ hook_add = '''
 
   augroup LCHighlight
       autocmd!
-      autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
+      autocmd CursorHold,CursorHoldI *.py,*.cpp call LanguageClient#textDocument_documentHighlight()
   augroup END
 
   let g:LanguageClient_autoStart = 1
-  " let g:LanguageClient_loadSettings = 1
-  " let g:LanguageClient_hasSnippetSupport = 0
-  " set completefunc=LanguageClient#complete
-  nnoremap K :call LanguageClient_textDocument_hover()<CR>
+  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
   nnoremap <silent> <Leader>F :call LanguageClient_textDocument_formatting()<CR>
   nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
   nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
