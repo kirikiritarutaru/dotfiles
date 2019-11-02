@@ -29,16 +29,6 @@ hook_add = '''
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add='''
-  nnoremap <silent> <space>fr :<C-u>Denite file_mru<CR>
-  nnoremap <silent> <space>fb :<C-u>Denite buffer<CR>
-  nnoremap <silent> <space>fy :<C-u>Denite neoyank<CR>
-  nnoremap <silent> <space>ff :<C-u>Denite file_rec<CR>
-  nnoremap <silent> <space>fu :<C-u>Denite outline<CR>
-'''
-
-[[plugins]]
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
@@ -80,21 +70,40 @@ hook_add = '''
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
-depends = ['deoplete.nvim']
 build = 'bash install.sh'
+depends = ['deoplete.nvim']
 hook_add = '''
+  "-------LSP settings
   set hidden
-  let g:LanguageClient_serverCommands = {
-        \ 'cpp': ['clangd'],
-        \ 'python':['pyls']
-        \ }
+  let g:LanguageClient_serverCommands = {}
+  if executable('clangd')
+      let g:LanguageClient_serverCommands['c'] = ['clangd']
+      let g:LanguageClient_serverCommands['cpp'] = ['clangd']
+  endif
+
+  if executable('pyls')
+      let g:LanguageClient_serverCommands['python'] = ['pyls']
+  endif
+
+  augroup LanguageClient_config
+      autocmd!
+      autocmd User LanguageClientStarted setlocal signcolumn=yes
+      autocmd User LanguageClientStopped setlocal signcolumn=auto
+  augroup END
+
+  augroup LCHighlight
+      autocmd!
+      autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
+  augroup END
+
+  let g:LanguageClient_autoStart = 1
   let g:LanguageClient_loadSettings = 1
-  let g:LanguageClient_hasSnippetSupport = 0
-  set completefunc=LanguageClient#complete
+  " let g:LanguageClient_hasSnippetSupport = 0
+  " set completefunc=LanguageClient#complete
   nnoremap K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <Leader>F :call LanguageClient#textDocument_formatting()<CR>
-  nnoremap <Leader>r :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <Leader>d :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> <Leader>F :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
 '''
 
 [[plugins]]
@@ -178,3 +187,10 @@ hook_add = '''
   vmap g/ <Plug>(easymotion-sn)
   omap g/ <Plug>(easymotion-tn)
 '''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depenops = ['context_filetype.vim']

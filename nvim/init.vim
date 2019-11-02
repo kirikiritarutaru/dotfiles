@@ -112,7 +112,7 @@ nnoremap <Leader>n :tabnew<Space>
 nnoremap <silent> <Leader>J :bnext<CR>
 nnoremap <silent> <Leader>K :bprev<CR>
 
-"<F5> でコード実行
+" <F4> でコード実行
 function! Exe()
   echo "Exe"
   let filename = expand('%:t')
@@ -129,28 +129,6 @@ endfunction
 command! Exe :call Exe()
 
 nnoremap <F4> :Exe<CR>
-
-"-------LSP settings
-let g:LanguageClient_serverCommands = {}
-if executable('clangd')
-    let g:LanguageClient_serverCommands['c'] = ['clangd']
-    let g:LanguageClient_serverCommands['cpp'] = ['clangd']
-endif
-
-if executable('pyls')
-    let g:LanguageClient_serverCommands['python'] = ['pyls']
-endif
-
-augroup LanguageClient_config
-    autocmd!
-    autocmd User LanguageClientStarted setlocal signcolumn=yes
-    autocmd User LanguageClientStopped setlocal signcolumn=auto
-augroup END
-
-augroup LCHighlight
-    autocmd!
-    autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
-augroup END
 
 "-------dein.vim
 if !&compatible
