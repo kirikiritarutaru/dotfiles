@@ -5,21 +5,9 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
 
-# インサートモードに入ったら読み込む
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 on_i = 1
-
-[[plugins]]
-repo   = 'Shougo/unite.vim'
-
-# unite.vim を読み込んだら一緒に読み込む
-[[plugins]]
-repo      = 'Shougo/neomru.vim'
-on_source = ['unite.vim']
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
 
 [[plugins]]
 repo = 'hynek/vim-python-pep8-indent'

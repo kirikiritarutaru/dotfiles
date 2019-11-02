@@ -121,3 +121,10 @@ hook_add = '''
   vmap g/ <Plug>(easymotion-sn)
   omap g/ <Plug>(easymotion-tn)
 '''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depenops = ['context_filetype.vim']

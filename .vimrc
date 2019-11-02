@@ -24,7 +24,7 @@ augroup END
 
 " 見た目系
 " 行番号を表示
-set relativenumber
+set number
 " 現在の行を強調表示
 " set cursorline
 " 現在の行を強調表示（縦）
@@ -99,7 +99,8 @@ noremap <Leader>l  $
 nnoremap <Leader>/  *
 noremap ; :
 noremap : ;
-nnoremap <F4> <CR>q:
+vnoremap ; :
+vnoremap : ;
 
 " タブページを使いやすいようにリマップ
 nnoremap <silent> <C-H> :tabprevious<CR>
@@ -109,6 +110,24 @@ nnoremap <Leader>n :tabnew<Space>
 " バッファを使いやすいようにリマップ
 nnoremap <silent> <Leader>J :bnext<CR>
 nnoremap <silent> <Leader>K :bprev<CR>
+
+" <F4> でコード実行
+function! Exe()
+  echo "Exe"
+  let filename = expand('%:t')
+  if stridx(filename, ".py") != -1
+    !python %
+  elseif stridx(filename, ".jl") != -1
+    !julia %
+  elseif stridx(filename, ".cpp") != -1
+    !./build_run.sh
+  else
+    echo "unknown filetype"+filename
+  endif
+endfunction
+command! Exe :call Exe()
+
+nnoremap <F4> :Exe<CR>
 
 "-------dein.vim
 if !&compatible
