@@ -102,7 +102,6 @@ noremap ; :
 noremap : ;
 vnoremap ; :
 vnoremap : ;
-" nnoremap <F4> <CR>q:
 
 " タブページを使いやすいようにリマップ
 nnoremap <silent> <C-H> :tabprevious<CR>
@@ -148,10 +147,10 @@ augroup LanguageClient_config
     autocmd User LanguageClientStopped setlocal signcolumn=auto
 augroup END
 
-" augroup LCHighlight
-"     autocmd!
-"     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
-" augroup END
+augroup LCHighlight
+    autocmd!
+    autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp call LanguageClient#textDocument_documentHighlight()
+augroup END
 
 "-------dein.vim
 if !&compatible
