@@ -185,4 +185,4 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
-depenops = ['context_filetype.vim']
+depends = ['context_filetype.vim']
