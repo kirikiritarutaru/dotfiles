@@ -86,10 +86,10 @@ hook_add = '''
       autocmd User LanguageClientStopped setlocal signcolumn=auto
   augroup END
 
-  augroup LCHighlight
-      autocmd!
-      autocmd CursorHold,CursorHoldI *.py,*.cpp call LanguageClient#textDocument_documentHighlight()
-  augroup END
+  " augroup LCHighlight
+  "     autocmd!
+  "     autocmd CursorHold,CursorHoldI *.py,*.cpp call LanguageClient#textDocument_documentHighlight()
+  " augroup END
 
   let g:LanguageClient_autoStart = 1
   nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>

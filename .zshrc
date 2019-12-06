@@ -78,7 +78,7 @@ alias gcm='git commit -m'
 alias gac='git add --all && git commit -m'
 alias gp='git push'
 # alias pia='pip-review -a'
-alias pia='pip-review -a && pi chainer python-language-server gym tensorflow cliff'
+alias pia='pip-review -a && pi chainer python-language-server gym tensorflow cliff jupyter-console'
 alias et='nvim ~/.tmux.conf'
 alias nv='nvim'
 alias envim='nvim ~/.config/nvim/init.vim'
@@ -121,7 +121,7 @@ eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
-export TERM=tmux-256color
+export TERM=gnome-256color
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export EDITOR=vim
