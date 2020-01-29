@@ -25,11 +25,9 @@ augroup END
 " 見た目系
 " 行番号を表示
 set number
-" 現在の行を強調表示
-" set cursorline
-" 現在の行を強調表示（縦）
-" set cursorcolumn
-" highlight CursorColumn ctermbg=DarkGray
+" カレント行と列の強調表示の色を設定
+highlight CursorColumn ctermbg=237
+highlight CursorLine cterm=None ctermbg=237
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
 " インデントはスマートインデント
@@ -101,6 +99,9 @@ noremap ; :
 noremap : ;
 vnoremap ; :
 vnoremap : ;
+
+" カレント行と列を強調表示（トグル）
+noremap <silent> <Leader>c :set cursorcolumn! <Bar>set cursorline!<CR>
 
 " タブページを使いやすいようにリマップ
 nnoremap <silent> <C-H> :tabprevious<CR>
