@@ -6,8 +6,11 @@ repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 hook_add = '''
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#auto_complete_delay = 0
-  let g:deoplete#auto_complete_start_length = 1
+  call deoplete#custom#option({
+  \ 'auto_complete_delay': 0,
+  \ 'auto_complete_start_length': 1,
+  \ 'smart_case': v:true,
+  \ })
   inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
   inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
 '''
