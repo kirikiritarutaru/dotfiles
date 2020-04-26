@@ -46,5 +46,19 @@ on_ft = ['c', 'cpp']
 depends = ['deoplete.nvim']
 
 [[plugins]]
-repo = 'Shougo/deoppet.nvim'
+repo = 'Shougo/neosnippet.vim'
+on_i  = 1
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
+hook_add = '''
+    let g:neosnippet#snippets_directory = '$HOME/dotfiles/nvim/snippets/'
+    imap <C-K>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-K>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-K>     <Plug>(neosnippet_expand_target)
+    if has('conceal')
+        set conceallevel=2 concealcursor=niv
+    endif
+'''
 
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
