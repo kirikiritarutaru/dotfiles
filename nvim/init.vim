@@ -17,8 +17,7 @@ set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
 " ヤンクでクリップボードにコピー
-set clipboard&
-set clipboard^=unnamedplus
+set clipboard=unnamedplus
 " 最後のカーソル位置を記憶
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -130,6 +129,7 @@ endfunction
 command! Exe :call Exe()
 
 nnoremap <F4> :Exe<CR>
+nnoremap <silent> <Leader>r :Exe<CR>
 
 "-------dein.vim
 if !&compatible
