@@ -10,3 +10,4 @@
  ln -sf ~/dotfiles/nvim/dein_lazy.toml ~/.config/nvim/dein_lazy.toml
  ln -sf ~/dotfiles/i3/config ~/.config/i3/config
  ln -sf ~/dotfiles/i3status/config ~/.config/i3status/config
+ ln -sf ~/dotfiles/regolith/i3/config ~/.config/regolith/i3/config
