@@ -254,7 +254,7 @@ hide_edge_borders smart
 ###############################################################################
 
 ## Session // Exit App // <><Shift> q ##
-bindsym $mod+Shift+q [con_id="__focused__"] kill
+# bindsym $mod+Shift+q [con_id="__focused__"] kill
 bindsym $mod+BackSpace [con_id="__focused__"] kill
 
 ## Session // Terminate App // <><Alt> q ##
