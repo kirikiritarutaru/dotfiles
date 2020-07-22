@@ -205,14 +205,14 @@ depends = ['context_filetype.vim']
 [[plugins]]
 repo = 'tomasr/molokai'
 hook_add = '''
-" カラースキーム
-colorscheme molokai
-" let g:molokai_original = 1
+  " カラースキーム
+  colorscheme molokai
+  " let g:molokai_original = 1
 '''
 [[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add = '''
-let g:rainbow_active = 1
+  let g:rainbow_active = 1
 '''
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
