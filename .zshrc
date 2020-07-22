@@ -45,15 +45,15 @@ setopt share_history
 setopt append_history
 
 #------------vcs_info
-autoload -Uz vcs_info
-setopt prompt_subst
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
-RPROMPT='${vcs_info_msg_0_}'
+# autoload -Uz vcs_info
+# setopt prompt_subst
+# zstyle ':vcs_info:git:*' check-for-changes true
+# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+# zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+# zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+# zstyle ':vcs_info:*' actionformats '[%b|%a]'
+# precmd () { vcs_info }
+# RPROMPT='${vcs_info_msg_0_}'
 
 #------------alias
 alias ez='nvim ~/.zshrc'
@@ -88,6 +88,7 @@ alias rmrf='rm -rf'
 alias ide='tmux split-window -h -d -p 66 && tmux split-window -v -d'
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
+alias wedm='sudo util/docker_build.sh ergodash/mini:mykeymap_mini:avrdude'
 
 #------------ranger
 function ranger-cd {
@@ -140,12 +141,12 @@ zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting"
 
-# if ! zplug check --verbose; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-#         echo; zplug install
-#     fi
-# fi
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
 zplug load --verbose > /dev/null
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
