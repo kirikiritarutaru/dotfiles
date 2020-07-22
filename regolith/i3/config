@@ -73,7 +73,7 @@ set_from_resource $ws19 i3-wm.workspace.19.name "19"
 ###############################################################################
 
 ## Launch // Terminal // <> Enter ##
-# bindsym $mod+Return exec /usr/bin/x-terminal-emulator -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME"
+bindsym $mod+Ctrl+Return exec /usr/bin/x-terminal-emulator -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME"
 
 bindsym $mod+Return exec urxvt -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME"
 
