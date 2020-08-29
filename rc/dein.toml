@@ -97,13 +97,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
-  nmap <Leader>b <Plug>(openbrowser-smart-search)
-  vmap <Leader>b <Plug>(openbrowser-smart-search)
-'''
-
-[[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = '''
   let g:EasyMotion_do_mapping = 1
@@ -128,3 +121,28 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'luochen1990/rainbow'
+hook_add = '''
+  let g:rainbow_active = 1
+'''
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+hook_add = '''
+  " カラースキーム
+  autocmd ColorScheme * highlight Comment ctermfg=102
+  autocmd ColorScheme * highlight Visual ctermbg=239
+  colorscheme molokai
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+  nmap <Leader>b <Plug>(openbrowser-smart-search)
+  vmap <Leader>b <Plug>(openbrowser-smart-search)
+'''

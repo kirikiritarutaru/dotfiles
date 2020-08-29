@@ -92,9 +92,9 @@ nnoremap Y y$
 nnoremap <Leader>p "0p
 
 " 押しにくいキーをremap
-noremap <Leader>h  ^
-noremap <Leader>l  $
-nnoremap <Leader>/  *
+noremap <silent> <Leader>h  ^
+noremap <silent> <Leader>l  $
+noremap <silent> <Leader>/  *
 noremap ; :
 noremap : ;
 vnoremap ; :

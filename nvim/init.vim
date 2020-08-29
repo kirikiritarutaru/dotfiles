@@ -65,6 +65,9 @@ set wrapscan
 set nohlsearch
 
 "---------マッピング
+" ESC連打でハイライト解除
+nnoremap <silent><Esc><Esc> :noh<CR>
+
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
 nnoremap N Nzz

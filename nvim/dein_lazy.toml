@@ -15,6 +15,17 @@ repo = 'tpope/vim-markdown'
 on_ft = ['md']
 
 [[plugins]]
+repo ='kannokanno/previm'
+hook_add = '''
+   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+   autocmd BufRead,BufNewFile *.md  set filetype=markdown
+   nnoremap <silent> <C-p> :PrevimOpen<CR>
+   let g:vim_markdown_folding_disabled=1
+   let g:previm_enable_realtime = 1
+'''
+on_ft = ['md']
+
+[[plugins]]
 repo = 'vim-scripts/a.vim'
 on_ft = ['c', 'cpp']
 hook_source = '''
