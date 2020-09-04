@@ -104,7 +104,7 @@ export LANGUAGE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
-export ENHANCD_HOOK_AFTER_CD="tree -L -C 1"
+export ENHANCD_HOOK_AFTER_CD="tree -C -L 1"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"

@@ -33,8 +33,44 @@ repo = 'roxma/vim-hug-neovim-rpc'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
+  " Powerline系フォントを利用する
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#buffer_idx_mode = 1
+  let g:airline#extensions#whitespace#mixed_indent_algo = 1
+  let g:airline_theme = 'molokai'
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = '☰'
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = '∄'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+  " powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
 '''
 
 [[plugins]]
@@ -46,7 +82,7 @@ hook_add='''
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_start_level = 2
   let g:indnet_guides_guide_size = 1
-  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'defx']
   let g:indent_guides_auto_colors = 0
   autocmd VimEnter,Colorscheme * hi IndentGuidesOdd  ctermbg=235
   autocmd VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=236
@@ -57,11 +93,16 @@ repo = 'vim-scripts/fcitx.vim'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+on_i = 1
 
 [[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
+repo = 'ntpeters/vim-better-whitespace'
 hook_add = '''
-  nnoremap <silent> <Leader>w :FixWhitespace<CR>
+  let g:better_whitespace_enabled=1
+  let g:strip_whitespace_on_save=1
+  let g:strip_whitespace_confirm = 0
+  let g:better_whitespace_filetypes_blacklist=['defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
+  nnoremap <silent> <Leader>w :StripWhitespace<CR>
 '''
 
 [[plugins]]
@@ -77,16 +118,6 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'tpope/vim-repeat'
 on_idle = 1
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-  nnoremap <Leader>f :<C-u>NERDTreeToggle<CR>
-  let NERDTreeIgnore = ['\.pyc$']
-  let g:NERDTreeQuitOnOpen=1
-  let g:NERDTreeShowHidden=1
-  let g:NERDTreeIgnore=['\.git$', '\.clean$', '\.swp$', '\.bak$', '\~$']
-'''
 
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
@@ -209,9 +240,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'jiangmiao/auto-pairs'
-
-[[plugins]]
 repo = 'tomasr/molokai'
 hook_add = '''
   " カラースキーム
@@ -226,3 +254,111 @@ hook_add = '''
   nmap <Leader>b <Plug>(openbrowser-smart-search)
   vmap <Leader>b <Plug>(openbrowser-smart-search)
 '''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+  nnoremap <silent> <Leader>f :<C-u> Defx <CR>
+
+  call defx#custom#option('_', {
+          \ 'winwidth': 35,
+          \ 'split': 'vertical',
+          \ 'direction': 'topleft',
+          \ 'show_ignored_files': 1,
+          \ 'buffer_name': 'exproler',
+          \ 'toggle': 1,
+          \ 'resume': 1,
+          \ 'columns': 'indent:git:icons:filename:mark',
+          \ })
+
+  call defx#custom#column('git', 'indicators', {
+    \ 'Modified'  : '✹',
+    \ 'Staged'    : '✚',
+    \ 'Untracked' : '✭',
+    \ 'Renamed'   : '➜',
+    \ 'Unmerged'  : '═',
+    \ 'Ignored'   : '☒',
+    \ 'Deleted'   : '✖',
+    \ 'Unknown'   : '?'
+    \ })
+
+
+  autocmd BufWritePost * call defx#redraw()
+  autocmd BufEnter * call defx#redraw()
+  autocmd FileType defx call s:defx_my_settings()
+
+  function! s:defx_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+     \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> c
+    \ defx#do_action('copy')
+    nnoremap <silent><buffer><expr> m
+    \ defx#do_action('move')
+    nnoremap <silent><buffer><expr> p
+    \ defx#do_action('paste')
+    nnoremap <silent><buffer><expr> l
+    \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> t
+    \ defx#do_action('open','tabnew')
+    nnoremap <silent><buffer><expr> E
+    \ defx#do_action('drop', 'vsplit')
+    nnoremap <silent><buffer><expr> P
+    \ defx#do_action('drop', 'pedit')
+    nnoremap <silent><buffer><expr> o
+    \ defx#do_action('open_or_close_tree')
+    nnoremap <silent><buffer><expr> K
+    \ defx#do_action('new_directory')
+    nnoremap <silent><buffer><expr> N
+    \ defx#do_action('new_file')
+    nnoremap <silent><buffer><expr> M
+    \ defx#do_action('new_multiple_files')
+    nnoremap <silent><buffer><expr> C
+    \ defx#do_action('toggle_columns',
+    \                'mark:indent:icon:filename:type:size:time')
+    nnoremap <silent><buffer><expr> S
+    \ defx#do_action('toggle_sort', 'time')
+    nnoremap <silent><buffer><expr> d
+    \ defx#do_action('remove')
+    nnoremap <silent><buffer><expr> r
+    \ defx#do_action('rename')
+    nnoremap <silent><buffer><expr> !
+    \ defx#do_action('execute_command')
+    nnoremap <silent><buffer><expr> x
+    \ defx#do_action('execute_system')
+    nnoremap <silent><buffer><expr> yy
+    \ defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> .
+    \ defx#do_action('toggle_ignored_files')
+    nnoremap <silent><buffer><expr> ;
+    \ defx#do_action('repeat')
+    nnoremap <silent><buffer><expr> h
+    \ defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> ~
+    \ defx#do_action('cd')
+    nnoremap <silent><buffer><expr> q
+    \ defx#do_action('quit')
+    nnoremap <silent><buffer><expr> <Space>
+    \ defx#do_action('toggle_select') . 'j'
+    nnoremap <silent><buffer><expr> *
+    \ defx#do_action('toggle_select_all')
+    nnoremap <silent><buffer><expr> j
+    \ line('.') == line('$') ? 'gg' : 'j'
+    nnoremap <silent><buffer><expr> k
+    \ line('.') == 1 ? 'G' : 'k'
+    nnoremap <silent><buffer><expr> <C-l>
+    \ defx#do_action('redraw')
+    nnoremap <silent><buffer><expr> <C-g>
+    \ defx#do_action('print')
+    nnoremap <silent><buffer><expr> cd
+    \ defx#do_action('change_vim_cwd')
+  endfunction
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
