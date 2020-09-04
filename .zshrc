@@ -44,17 +44,6 @@ setopt share_history
 # 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
 setopt append_history
 
-#------------vcs_info
-# autoload -Uz vcs_info
-# setopt prompt_subst
-# zstyle ':vcs_info:git:*' check-for-changes true
-# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-# zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-# zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-# zstyle ':vcs_info:*' actionformats '[%b|%a]'
-# precmd () { vcs_info }
-# RPROMPT='${vcs_info_msg_0_}'
-
 #------------alias
 alias ez='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
@@ -115,7 +104,7 @@ export LANGUAGE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
-export ENHANCD_HOOK_AFTER_CD="tree -L 1"
+export ENHANCD_HOOK_AFTER_CD="tree -L -C 1"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
