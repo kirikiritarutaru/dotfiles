@@ -70,7 +70,6 @@ hook_add = '''
   nnoremap <silent> <Leader>w :StripWhitespace<CR>
 '''
 
-
 [[plugins]]
 repo = 'terryma/vim-expand-region'
 

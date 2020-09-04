@@ -62,7 +62,7 @@ set incsearch
 " 検索時に最後まで行ったら最初に戻る
 set wrapscan
 " 検索語をハイライト表示
-set nohlsearch
+set hlsearch
 
 "---------マッピング
 " ESC連打でハイライト解除
@@ -109,8 +109,12 @@ nnoremap <silent> <Leader>K :tabnext<CR>
 nnoremap <Leader>n :tabnew<Space>
 
 " バッファを使いやすいようにリマップ
-nnoremap <silent> <C-H> :bnext<CR>
-nnoremap <silent> <C-L> :bprev<CR>
+nnoremap <silent> <C-h> :bprev<CR>
+nnoremap <silent> <C-l> :bnext<CR>
+
+" 直前の置換を繰り返す「&」コマンドの修正
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 
 " <F4> でコード実行
 function! Exe()
