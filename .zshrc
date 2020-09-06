@@ -48,7 +48,7 @@ setopt append_history
 alias ez='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias l='ls -CF'
-alias ls='ls --color=auto'
+alias ls='ls --color=auto -CF'
 alias lt='ls -tlr'
 alias ll='ls -alF'
 alias la='ls -A'
