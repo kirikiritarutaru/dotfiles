@@ -104,13 +104,13 @@ vnoremap : ;
 noremap <silent> <Leader>c :set cursorcolumn! <Bar>set cursorline!<CR>
 
 " タブページを使いやすいようにリマップ
-nnoremap <silent> <C-H> :tabprevious<CR>
-nnoremap <silent> <C-L> :tabnext<CR>
+nnoremap <silent> <Leader>J :tabprevious<CR>
+nnoremap <silent> <Leader>K :tabnext<CR>
 nnoremap <Leader>n :tabnew<Space>
 
 " バッファを使いやすいようにリマップ
-nnoremap <silent> <Leader>J :bnext<CR>
-nnoremap <silent> <Leader>K :bprev<CR>
+nnoremap <silent> <C-H> :bnext<CR>
+nnoremap <silent> <C-L> :bprev<CR>
 
 " <F4> でコード実行
 function! Exe()
