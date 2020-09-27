@@ -89,9 +89,6 @@ hook_add='''
 '''
 
 [[plugins]]
-repo = 'vim-scripts/fcitx.vim'
-
-[[plugins]]
 repo = 'cohama/lexima.vim'
 on_i = 1
 

@@ -78,6 +78,7 @@ alias ide='tmux split-window -h -d -p 66 && tmux split-window -v -d'
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
 alias wedm='sudo util/docker_build.sh ergodash/mini:mykeymap_mini:avrdude'
+alias prp='poetry run python'
 
 #------------ranger
 function ranger-cd {
@@ -108,7 +109,7 @@ export ENHANCD_HOOK_AFTER_CD="tree -C -L 1"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init -)"
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export TERM=gnome-256color

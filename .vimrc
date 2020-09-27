@@ -65,6 +65,20 @@ set nohlsearch
 " ESC連打でハイライト解除
 nnoremap <silent><Esc><Esc> :noh<CR>
 
+" ESC時に日本語入力解除
+let g:input_toggle = 1
+function! Fcitx2en()
+   let s:input_status = system("fcitx-remote")
+   if s:input_status == 2
+      let g:input_toggle = 1
+      let l:a = system("fcitx-remote -c")
+   endif
+endfunction
+set ttimeoutlen=150
+"Leave Insert mode
+autocmd InsertLeave * call Fcitx2en()
+
+
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
 nnoremap N Nzz
