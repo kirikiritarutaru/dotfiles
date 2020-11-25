@@ -6,10 +6,6 @@ let g:python_host_prog = ''
 let mapleader = "\<Space>"
 "文字コードをUFT-8に設定
 set fenc=utf-8
-" バックアップファイルを作らない
-set nobackup
-" スワップファイルを作らない
-set noswapfile
 " 編集中のファイルが変更されたら自動で読み直す
 set autoread
 " バッファが編集中でもその他のファイルを開けるように
@@ -147,6 +143,19 @@ command! Exe :call Exe()
 
 nnoremap <F4> :Exe<CR>
 nnoremap <silent> <Leader>r :Exe<CR>
+
+"vimrcをスペースドットで開く
+nnoremap <space>. :<c-u>tabedit $MYVIMRC<CR>
+" 入力モード中に素早くjjと入力した場合はESCとみなす
+inoremap jj <Esc>
+" 数字のインクリメントとデクリメントを分かりやすく
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" バックアップファイル，スワップファイル，アンドゥファイルの場所を変更
+set backupdir=~/.config/nvim/backup
+set directory=$backupdir
+set undodir=$backupdir
 
 "-------dein.vim
 if !&compatible
