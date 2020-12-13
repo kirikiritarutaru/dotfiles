@@ -77,7 +77,7 @@ alias rmrf='rm -rf'
 alias ide='tmux split-window -h -d -p 66 && tmux split-window -v -d'
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
-alias wedm='sudo util/docker_build.sh ergodash/mini:mykeymap_mini:avrdude'
+alias keymapupdate='sudo util/docker_build.sh ergodash/mini:mykeymap_mini:avrdude'
 alias prp='poetry run python'
 
 #------------ranger
