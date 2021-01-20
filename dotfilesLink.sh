@@ -2,6 +2,7 @@
  sudo add-apt-repository ppa:regolith-linux/release
  sudo apt install regolith-desktop-standard -y
  mkdir -p ~/.config/regolith/i3
+ sudo apt install -y vim neovim
  ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
  ln -sf ~/dotfiles/.vimrc ~/.vimrc
  ln -sf ~/dotfiles/.zshrc ~/.zshrc
