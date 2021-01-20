@@ -112,7 +112,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
-export TERM=gnome-256color
+# export TERM=gnome-256color
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export EDITOR=vim

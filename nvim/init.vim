@@ -154,8 +154,8 @@ nnoremap - <C-x>
 
 " バックアップファイル，スワップファイル，アンドゥファイルの場所を変更
 set backupdir=~/.config/nvim/backup
-set directory=$backupdir
-set undodir=$backupdir
+set directory=~/.config/nvim/backup
+set undodir=~/.config/nvim/backup
 
 "-------dein.vim
 if !&compatible
