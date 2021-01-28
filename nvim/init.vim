@@ -180,6 +180,7 @@ endif
 filetype plugin indent on
 syntax enable
 autocmd FileType python setlocal equalprg=autopep8\ - " python code format
+autocmd BufNewFile,BufRead *.csv setfiletype csv
 
 if dein#check_install()
   call dein#install()
