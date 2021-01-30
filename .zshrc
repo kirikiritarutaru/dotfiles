@@ -44,6 +44,9 @@ setopt share_history
 # 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
 setopt append_history
 
+# キー待ち時間を短縮
+KEYTIMEOUT=1
+
 #------------alias
 alias ez='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'

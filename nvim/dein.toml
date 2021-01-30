@@ -138,7 +138,6 @@ hook_add = '''
   augroup LCHighlight
       autocmd!
       autocmd CursorHold,CursorHoldI *.py,*.cpp call LanguageClient#textDocument_documentHighlight()
-      " autocmd CursorHold *.py,*.cpp call LanguageClient#textDocument_documentHighlight()
   augroup END
 
   let g:LanguageClient_autoStart = 1
@@ -147,20 +146,6 @@ hook_add = '''
   nnoremap <silent> <Leader>R :call LanguageClient_textDocument_rename()<CR>
   nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
 '''
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-  let g:gitgutter_map_keys = 0
-  nmap ]h <Plug>(GitGutterNextHunk)
-  nmap [h <Plug>(GitGutterPrevHunk)
-'''
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'simeji/winresizer'
 
 [[plugins]]
 repo = 'jacquesbh/vim-showmarks'
