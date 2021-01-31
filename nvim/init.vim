@@ -155,6 +155,20 @@ set backupdir=~/.config/nvim/backup
 set directory=~/.config/nvim/backup
 set undodir=~/.config/nvim/backup
 
+" bool値を反転
+function! BooleanToggle()
+  let l:word = expand("<cword>")
+  let l:bool = {'True': 'False', 'False': 'True'}
+  if has_key(l:bool, l:word)
+    let l:tmp = @a
+    let @a = l:bool[l:word]
+    execute 'normal "_diw'
+    execute 'normal "aP'
+    let @a = l:tmp
+  endif
+endfunction
+nnoremap <silent> <Leader>t :call BooleanToggle()<CR>
+
 "-------dein.vim
 if !&compatible
   set nocompatible
