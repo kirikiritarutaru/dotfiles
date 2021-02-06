@@ -89,3 +89,12 @@ hook_add = '''
   autocmd BufWrite *.py :Isort
 '''
 on_ft = ['python']
+
+[[plugins]]
+repo = 'tell-k/vim-autoflake'
+hook_add = '''
+  let g:autoflake_imports="django,requests,urllib3"
+  let g:autoflake_remove_all_unused_imports=1
+  let g:autoflake_remove_unused_variables=1
+'''
+on_ft = ['python']
