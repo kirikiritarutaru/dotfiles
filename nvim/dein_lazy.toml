@@ -86,7 +86,7 @@ on_ft = ['csv']
 [[plugins]]
 repo = 'fisadev/vim-isort'
 hook_add = '''
-  autocmd BufWrite *.py :Isort
+  " autocmd BufWrite *.py :Isort
 '''
 on_ft = ['python']
 

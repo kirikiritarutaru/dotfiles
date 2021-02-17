@@ -111,6 +111,9 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+hook_add = '''
+  let b:surround_indent=1
+'''
 
 [[plugins]]
 repo = 'tpope/vim-repeat'

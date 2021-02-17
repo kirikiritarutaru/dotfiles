@@ -19,6 +19,8 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
+" マウス操作オン
+set mouse=a
 
 " 見た目系
 " 行番号を表示
@@ -189,10 +191,10 @@ if dein#load_state(s:dein_cache_dir)
   call dein#save_state()
 endif
 
-filetype plugin indent on
 syntax enable
 autocmd FileType python setlocal equalprg=autopep8\ - " python code format
 autocmd BufNewFile,BufRead *.csv setfiletype csv
+filetype plugin indent on
 
 if dein#check_install()
   call dein#install()
