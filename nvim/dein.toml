@@ -233,13 +233,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
-  nmap <Leader>b <Plug>(openbrowser-smart-search)
-  vmap <Leader>b <Plug>(openbrowser-smart-search)
-'''
-
-[[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
   nnoremap <silent> <Leader>f :<C-u> Defx <CR>
