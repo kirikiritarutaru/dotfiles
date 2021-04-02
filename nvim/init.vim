@@ -146,8 +146,6 @@ nnoremap <silent> <Leader>r :Exe<CR>
 
 "vimrcをスペースドットで開く
 nnoremap <space>. :<c-u>tabedit $MYVIMRC<CR>
-" 入力モード中に素早くjjと入力した場合はESCとみなす
-inoremap jj <Esc>
 " 数字のインクリメントとデクリメントを分かりやすく
 nnoremap + <C-a>
 nnoremap - <C-x>
