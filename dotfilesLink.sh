@@ -18,9 +18,3 @@ ln -sf ~/dotfiles/nvim/dein.toml ~/.config/nvim/dein.toml
 ln -sf ~/dotfiles/nvim/dein_lazy.toml ~/.config/nvim/dein_lazy.toml
 ln -sf ~/dotfiles/regolith/i3/config ~/.config/regolith/i3/config
 source ~/.zshrc
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-git clone git://github.com/yyuu/pyenv-update.git ~/.pyenv/plugins/pyenv-update
-pyenv install 3.9.1
-pip install pip setuptools -U
-pip install pynvim
