@@ -123,8 +123,12 @@ nnoremap <silent> <Leader>K :tabnext<CR>
 nnoremap <Leader>n :tabnew<Space>
 
 " バッファを使いやすいようにリマップ
-nnoremap <silent> <C-H> :bnext<CR>
-nnoremap <silent> <C-L> :bprev<CR>
+nnoremap <silent> <C-h> :bprev<CR>
+nnoremap <silent> <C-l> :bnext<CR>
+
+" 直前の置換を繰り返す「&」コマンドの修正
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 
 " <F4> でコード実行
 function! Exe()
@@ -143,6 +147,10 @@ endfunction
 command! Exe :call Exe()
 
 nnoremap <F4> :Exe<CR>
+
+" 数字のインクリメントとデクリメントを分かりやすく
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 "-------dein.vim
 if !&compatible
