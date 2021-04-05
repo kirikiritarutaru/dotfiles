@@ -174,10 +174,3 @@ hook_add = '''
   autocmd ColorScheme * highlight Visual ctermbg=239
   colorscheme molokai
 '''
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
-  nmap <Leader>b <Plug>(openbrowser-smart-search)
-  vmap <Leader>b <Plug>(openbrowser-smart-search)
-'''
