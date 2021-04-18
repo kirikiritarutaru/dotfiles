@@ -41,3 +41,23 @@ hook_add = '''
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
+
+[[plugins]]
+repo = 'mechatroner/rainbow_csv'
+on_ft = ['csv']
+
+[[plugins]]
+repo = 'fisadev/vim-isort'
+hook_add = '''
+  " autocmd BufWrite *.py :Isort
+'''
+on_ft = ['python']
+
+[[plugins]]
+repo = 'tell-k/vim-autoflake'
+hook_add = '''
+  let g:autoflake_imports="django,requests,urllib3"
+  let g:autoflake_remove_all_unused_imports=1
+  let g:autoflake_remove_unused_variables=1
+'''
+on_ft = ['python']
