@@ -115,10 +115,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
-
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
-# export TERM=gnome-256color
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export EDITOR=vim
