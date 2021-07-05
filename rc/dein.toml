@@ -174,3 +174,4 @@ hook_add = '''
   autocmd ColorScheme * highlight Visual ctermbg=239
   colorscheme molokai
 '''
+
