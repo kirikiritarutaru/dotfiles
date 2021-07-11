@@ -126,7 +126,6 @@ export PYENV_PATH=$HOME/.pyenv
 #------------zsh-python-prompt
 PROMPT+='$ZSH_PYTHON_PROMPT'
 
-
 #------------zplug
 source ~/.zplug/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
