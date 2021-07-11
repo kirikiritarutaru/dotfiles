@@ -341,14 +341,9 @@ repo = 'kristijanhusak/defx-icons'
 repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
-hook_add = '''
-  let g:syntastic_python_checkers = ["flake8"]
-'''
-
-[[plugins]]
 repo = "airblade/vim-gitgutter"
 hook_add = '''
+  let g:gitgutter_map_keys = 0
   nmap ]h <Plug>(GitGutterNextHunk)
   nmap [h <Plug>(GitGutterPrevHunk)
 '''

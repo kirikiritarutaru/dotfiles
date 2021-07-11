@@ -70,5 +70,14 @@ hook_add = '''
   let g:autoflake_imports="django,requests,urllib3"
   let g:autoflake_remove_all_unused_imports=1
   let g:autoflake_remove_unused_variables=1
+  let g:autoflake_disable_show_diff=1
 '''
 on_ft = ['python']
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+hook_add = '''
+  let g:syntastic_python_checkers = ["flake8"]
+'''
+on_ft = ['python']
+

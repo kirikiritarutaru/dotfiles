@@ -104,9 +104,6 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
-#------------zsh-python-prompt
-PROMPT+='$ZSH_PYTHON_PROMPT'
-
 #------------export
 export LANGUAGE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
@@ -121,11 +118,14 @@ fi
 eval "$(pyenv virtualenv-init -)"
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 export EDITOR=vim
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64
 export TERM='screen-256color'
+export PYENV_PATH=$HOME/.pyenv
+
+#------------zsh-python-prompt
+PROMPT+='$ZSH_PYTHON_PROMPT'
+
 
 #------------zplug
 source ~/.zplug/init.zsh
