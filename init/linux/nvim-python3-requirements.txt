@@ -1,0 +1,17 @@
+autopep8
+flake8
+greenlet
+isort
+jedi
+mccabe
+msgpack
+parso
+pluggy
+pycodestyle
+pyflakes
+pynvim
+python-jsonrpc-server
+python-language-server
+rope
+toml
+ujson

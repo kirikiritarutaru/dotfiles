@@ -104,6 +104,9 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+#------------zsh-python-prompt
+PROMPT+='$ZSH_PYTHON_PROMPT'
+
 #------------export
 export LANGUAGE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
@@ -115,12 +118,14 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
+eval "$(pyenv virtualenv-init -)"
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export EDITOR=vim
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64
+export TERM='screen-256color'
 
 #------------zplug
 source ~/.zplug/init.zsh
@@ -135,6 +140,7 @@ zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
 zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting"
+zplug 'yonchu/zsh-python-prompt'
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
