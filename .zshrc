@@ -124,7 +124,7 @@ export TERM='screen-256color'
 export PYENV_PATH=$HOME/.pyenv
 
 #------------zsh-python-prompt
-PROMPT+='$ZSH_PYTHON_PROMPT'
+# PROMPT+='$ZSH_PYTHON_PROMPT'
 
 #------------zplug
 source ~/.zplug/init.zsh
