@@ -1,0 +1,70 @@
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+on_i  = 1
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
+hook_add = '''
+  let g:neosnippet#snippets_directory = '$HOME/dotfiles/nvim/snippets/'
+  " Plugin key-mappings.
+  " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+  " For conceal markers.
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'mechatroner/rainbow_csv'
+on_ft = ['csv']
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'tell-k/vim-autopep8'
+hook_add = '''
+  let g:autopep8_disable_show_diff=1
+  let g:autopep8_on_save = 1
+  autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+'''
+on_ft = ['python']
+
+[[plugins]]
+repo = 'fisadev/vim-isort'
+hook_add = '''
+  autocmd BufWrite *.py :Isort
+'''
+on_ft = ['python']
+
+[[plugins]]
+repo = 'tell-k/vim-autoflake'
+hook_add = '''
+  let g:autoflake_imports="django,requests,urllib3"
+  let g:autoflake_remove_all_unused_imports=1
+  let g:autoflake_remove_unused_variables=1
+  let g:autoflake_disable_show_diff=1
+'''
+on_ft = ['python']
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+hook_add = '''
+  let g:syntastic_python_checkers = ["flake8"]
+'''
+on_ft = ['python']
+

@@ -1,0 +1,349 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+  call deoplete#custom#option({
+  \ 'auto_complete_delay': 0,
+  \ 'auto_complete_start_length': 1,
+  \ 'smart_case': v:true,
+  \ })
+
+  function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction"}}}
+  inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#manual_complete()
+
+  inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+'''
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+hook_add = '''
+  " Powerline系フォントを利用する
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#buffer_idx_mode = 1
+  let g:airline#extensions#whitespace#mixed_indent_algo = 1
+  let g:airline_theme = 'molokai'
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = '☰'
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = '∄'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+  " powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+hook_add = '''
+  let g:better_whitespace_enabled=1
+  let g:strip_whitespace_on_save=1
+  let g:strip_whitespace_confirm = 0
+  let g:better_whitespace_filetypes_blacklist=['defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
+  nnoremap <silent> <Leader>w :StripWhitespace<CR>
+'''
+
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+on_idle = 1
+
+[[plugins]]
+repo = 'terryma/vim-multiple-cursors'
+
+[[plugins]]
+repo = 'simeji/winresizer'
+
+[[plugins]]
+repo = 'jacquesbh/vim-showmarks'
+hook_add = '''
+  nnoremap [Mark] <Nop>
+  nmap m [Mark]
+  if !exists('g:markrement_char')
+      let g:markrement_char = [
+      \     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+      \     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+      \ ]
+  endif
+  nnoremap <silent>[Mark]s :<C-u>call <SID>AutoMarkrement()<CR>:DoShowMarks<CR>
+  function! s:AutoMarkrement()
+      if !exists('b:markrement_pos')
+          let b:markrement_pos = 0
+      else
+          let b:markrement_pos = (b:markrement_pos + 1) % len(g:markrement_char)
+      endif
+      execute 'mark' g:markrement_char[b:markrement_pos]
+      echo 'marked' g:markrement_char[b:markrement_pos]
+  endfunction
+  let b:mark_exist = 0
+  set updatetime=1
+  function! s:MarkList()
+    if b:mark_exist == 0
+      let b:mark_exist = 1
+      nnoremap <silent>[Mark]l :<C-u>1PreviewMarks<CR>
+      \:<C-u>NoShowMarks<CR> :<C-u>call <SID>MarkList()<CR>
+    else
+      let b:mark_exist = 0
+      nnoremap <silent>[Mark]l :<C-u>PreviewMarks<CR>
+      \:<C-u>DoShowMarks<CR> :<C-u>call <SID>MarkList()<CR>
+    endif
+  endfunction
+  nnoremap <silent>[Mark]l :<C-u>PreviewMarks<CR>
+  \:<C-u>DoShowMarks<CR> :<C-u>call <SID>MarkList()<CR>
+  nnoremap [Mark]m '
+  nnoremap [Mark]n ]`
+  nnoremap [Mark]b [`
+  nnoremap [Mark]D :<C-u>1PreviewMarks<CR> :delmarks!<CR>
+'''
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+  let g:EasyMotion_do_mapping = 1
+  let g:EasyMotion_smartcase = 1
+  let g:EasyMotion_use_upper = 1
+  let g:EasyMotion_enter_jump_first = 1
+  let g:EasyMotion_space_jump_first = 1
+  nmap <Leader>s <Plug>(easymotion-s2)
+  vmap <Leader>s <Plug>(easymotion-s2)
+  nmap <Leader>j <Plug>(easymotion-j)
+  nmap <Leader>k <Plug>(easymotion-k)
+  vmap <Leader>j <Plug>(easymotion-j)
+  vmap <Leader>k <Plug>(easymotion-k)
+  nmap g/ <Plug>(easymotion-sn)
+  vmap g/ <Plug>(easymotion-sn)
+  omap g/ <Plug>(easymotion-tn)
+'''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'luochen1990/rainbow'
+hook_add = '''
+  let g:rainbow_active = 1
+'''
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+hook_add = '''
+  autocmd ColorScheme * highlight Comment ctermfg=102
+  autocmd ColorScheme * highlight Visual ctermbg=239
+  colorscheme molokai
+'''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+  nnoremap <silent> <Leader>f :<C-u> Defx <CR>
+
+  call defx#custom#option('_', {
+          \ 'winwidth': 35,
+          \ 'split': 'vertical',
+          \ 'direction': 'topleft',
+          \ 'show_ignored_files': 1,
+          \ 'buffer_name': 'exproler',
+          \ 'toggle': 1,
+          \ 'resume': 1,
+          \ 'columns': 'indent:git:icons:filename:mark',
+          \ })
+
+  call defx#custom#column('git', 'indicators', {
+    \ 'Modified'  : '✹',
+    \ 'Staged'    : '✚',
+    \ 'Untracked' : '✭',
+    \ 'Renamed'   : '➜',
+    \ 'Unmerged'  : '═',
+    \ 'Ignored'   : '☒',
+    \ 'Deleted'   : '✖',
+    \ 'Unknown'   : '?'
+    \ })
+
+
+  autocmd BufWritePost * call defx#redraw()
+  autocmd BufEnter * call defx#redraw()
+  autocmd FileType defx call s:defx_my_settings()
+
+  function! s:defx_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+     \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> c
+    \ defx#do_action('copy')
+    nnoremap <silent><buffer><expr> m
+    \ defx#do_action('move')
+    nnoremap <silent><buffer><expr> p
+    \ defx#do_action('paste')
+    nnoremap <silent><buffer><expr> l
+    \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> t
+    \ defx#do_action('open','tabnew')
+    nnoremap <silent><buffer><expr> E
+    \ defx#do_action('drop', 'vsplit')
+    nnoremap <silent><buffer><expr> P
+    \ defx#do_action('drop', 'pedit')
+    nnoremap <silent><buffer><expr> o
+    \ defx#do_action('open_or_close_tree')
+    nnoremap <silent><buffer><expr> K
+    \ defx#do_action('new_directory')
+    nnoremap <silent><buffer><expr> N
+    \ defx#do_action('new_file')
+    nnoremap <silent><buffer><expr> M
+    \ defx#do_action('new_multiple_files')
+    nnoremap <silent><buffer><expr> C
+    \ defx#do_action('toggle_columns',
+    \                'mark:indent:icon:filename:type:size:time')
+    nnoremap <silent><buffer><expr> S
+    \ defx#do_action('toggle_sort', 'time')
+    nnoremap <silent><buffer><expr> d
+    \ defx#do_action('remove')
+    nnoremap <silent><buffer><expr> r
+    \ defx#do_action('rename')
+    nnoremap <silent><buffer><expr> !
+    \ defx#do_action('execute_command')
+    nnoremap <silent><buffer><expr> x
+    \ defx#do_action('execute_system')
+    nnoremap <silent><buffer><expr> yy
+    \ defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> .
+    \ defx#do_action('toggle_ignored_files')
+    nnoremap <silent><buffer><expr> ;
+    \ defx#do_action('repeat')
+    nnoremap <silent><buffer><expr> h
+    \ defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> ~
+    \ defx#do_action('cd')
+    nnoremap <silent><buffer><expr> q
+    \ defx#do_action('quit')
+    nnoremap <silent><buffer><expr> <Space>
+    \ defx#do_action('toggle_select') . 'j'
+    nnoremap <silent><buffer><expr> *
+    \ defx#do_action('toggle_select_all')
+    nnoremap <silent><buffer><expr> j
+    \ line('.') == line('$') ? 'gg' : 'j'
+    nnoremap <silent><buffer><expr> k
+    \ line('.') == 1 ? 'G' : 'k'
+    nnoremap <silent><buffer><expr> <C-l>
+    \ defx#do_action('redraw')
+    nnoremap <silent><buffer><expr> <C-g>
+    \ defx#do_action('print')
+    nnoremap <silent><buffer><expr> cd
+    \ defx#do_action('change_vim_cwd')
+  endfunction
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+depends = ['deoplete.nvim']
+hook_add = '''
+  "-------LSP settings
+  let g:LanguageClient_serverCommands = {
+        \ 'python':['pyls'],
+        \ 'cpp':['clangd'],
+        \}
+
+  augroup LanguageClient_config
+      autocmd!
+      autocmd User LanguageClientStarted setlocal signcolumn=yes
+      autocmd User LanguageClientStopped setlocal signcolumn=auto
+  augroup END
+
+  " augroup LCHighlight
+  "     autocmd!
+  "     autocmd CursorHold,CursorHoldI *.py,*.cpp call LanguageClient#textDocument_documentHighlight()
+  " augroup END
+
+  let g:LanguageClient_autoStart = 1
+  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+  nnoremap <silent> <Leader>F :call LanguageClient_textDocument_formatting()<CR>
+  nnoremap <silent> <Leader>R :call LanguageClient_textDocument_rename()<CR>
+  nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+marged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends=['fzf']
+hook_add = '''
+  cmap <C-r> :History:<CR>
+  cmap <C-f> :History<CR>
+  cmap <C-h> :History/<CR>
+'''
+
