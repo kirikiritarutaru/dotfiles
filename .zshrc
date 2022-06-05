@@ -48,39 +48,57 @@ setopt append_history
 KEYTIMEOUT=1
 
 #------------alias
-alias ez='nvim ~/.zshrc'
-alias sz='source ~/.zshrc'
+# misc
 alias l='ls -CF'
 alias ls='ls --color=auto -CF'
 alias lt='ls -tlr'
 alias ll='ls -alF'
 alias la='ls -A'
+alias rmi='rm -i'
+alias mvi='mv -i'
+alias cpi='cp -i'
+alias rmrf='rm -rf'
+alias rc='ranger-cd'
+
+# zsh関係
+alias ez='nvim ~/.zshrc'
+alias sz='source ~/.zshrc'
+
+# tmux関係
+alias et='nvim ~/.tmux.conf'
+alias ide='tmux split-window -h -d -p 66 && tmux split-window -v -d'
+
+# update関係
 alias sad='sudo apt update'
 alias sag='sudo apt upgrade -y'
 alias sai='sudo apt install'
 alias sar='sudo apt autoremove -y'
+alias unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
 alias aptupd='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
 alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && pyenv update && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es && zplug update && ~/.tmux/plugins/tpm/bin/update_plugins all'
 alias partupdate='nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es && zplug update && ~/.tmux/plugins/tpm/bin/update_plugins all'
+
+# pip関係
 alias pi='pip install'
 alias piu='pip install -U'
+alias pip-upgrade-all="pip list -o | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
+
+# git関係
 alias g='git'
 alias gaa='git add --all'
 alias gcm='git commit -m'
 alias gac='git add --all && git commit -m'
 alias gp='git push origin HEAD'
-alias pip-upgrade-all="pip list -o | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
-alias et='nvim ~/.tmux.conf'
+alias gg='git graph'
+
+# vim, neovim関係
 alias nv='nvim'
 alias envim='nvim ~/.config/nvim/init.vim'
-alias unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
-alias rc='ranger-cd'
-alias rmrf='rm -rf'
-alias ide='tmux split-window -h -d -p 66 && tmux split-window -v -d'
-alias rmi='rm -i'
-alias mvi='mv -i'
-alias cpi='cp -i'
-alias gg='git graph'
+
+# docker 関係
+alias d='docker'
+alias dps='docker ps -a'
+alias dis='docker images'
 
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
