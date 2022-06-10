@@ -95,11 +95,6 @@ alias gg='git graph'
 alias nv='nvim'
 alias envim='nvim ~/.config/nvim/init.vim'
 
-# docker 関係
-alias d='docker'
-alias dps='docker ps -a'
-alias dis='docker images'
-
 # ウィンドウのプロパティ値の取得コマンド
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
 
@@ -155,9 +150,10 @@ zplug "chrissicool/zsh-256color"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
 zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme, at:main
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug 'yonchu/zsh-python-prompt'
+zplug "tcnksm/docker-alias", use:zshrc
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
