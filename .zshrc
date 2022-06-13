@@ -91,6 +91,9 @@ alias gac='git add --all && git commit -m'
 alias gp='git push origin HEAD'
 alias gg='git graph'
 
+# docker 関係
+alias d='docker'
+
 # vim, neovim関係
 alias nv='nvim'
 alias envim='nvim ~/.config/nvim/init.vim'
