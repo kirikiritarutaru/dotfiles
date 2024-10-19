@@ -136,9 +136,11 @@ eval "$(pyenv virtualenv-init -)"
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export EDITOR=vim
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64
 export TERM='screen-256color'
 export PYENV_PATH=$HOME/.pyenv
+
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 set termguicolors
 
