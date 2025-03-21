@@ -27,3 +27,10 @@ git clone git://github.com/yyuu/pyenv-update.git ~/.pyenv/plugins/pyenv-update
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ln -sf ~/dotfiles/.xbindkeysrc ~/.xbindkeysrc
+
+curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
+    | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+sheldon init --shell zsh
+ln -sf ~/dotfiles/.config/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
+ln -sf ~/dotfiles/.config/zsh-abbr/user-abbreviations ~/.config/zsh-abbr/user-abbreviations
+source ~/.zshrc

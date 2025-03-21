@@ -1,8 +1,4 @@
-#------------shledon
-eval "$(sheldon source)"
-
 #------------settings
-bindkey '^ ' autosuggest-accept
 bindkey -v
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -102,30 +98,13 @@ function tmux-window-switcher () {
 zle -N tmux-window-switcher
 bindkey '^w' tmux-window-switcher
 
-#------------export
-export LANGUAGE=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
-export LC_CTYPE=ja_JP.UTF-8
-export LANG=ja_JP.UTF-8
-export ENHANCD_HOOK_AFTER_CD="tree -C -L 1"
-export PYENV_ROOT=$HOME/.pyenv
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
-eval "$(pyenv virtualenv-init -)"
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export EDITOR=vim
-export TERM='screen-256color'
-export PYENV_PATH=$HOME/.pyenv
-
-export PATH="/usr/local/cuda/bin:$PATH"
-export PATH=$PATH:$HOME/.local/bin
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-
 set termguicolors
 
+#------------shledon
+eval "$(sheldon source)"
+
+# sheldon sourceより後におかないとだめっぽい？
+bindkey '^ ' autosuggest-accept
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]] && zcompile ~/.zshrc
