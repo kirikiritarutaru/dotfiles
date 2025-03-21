@@ -1,6 +1,9 @@
+#------------shledon
+eval "$(sheldon source)"
+
 #------------settings
-bindkey -v
 bindkey '^ ' autosuggest-accept
+bindkey -v
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=100000
@@ -48,58 +51,13 @@ setopt append_history
 KEYTIMEOUT=1
 
 #------------alias
-# misc
-alias l='ls -CF'
-alias ls='ls --color=auto -CF'
+alias l='ls -GF'
+alias ls='ls --color=auto -GF'
 alias lt='ls -tlr'
 alias ll='ls -alF'
 alias la='ls -A'
-alias rmi='rm -i'
-alias mvi='mv -i'
-alias cpi='cp -i'
-alias rmrf='rm -rf'
-alias rc='ranger-cd'
 
-# zsh関係
-alias ez='nvim ~/.zshrc'
-alias sz='source ~/.zshrc'
-
-# tmux関係
-alias et='nvim ~/.tmux.conf'
-alias ide='tmux split-window -h -d -p 66 && tmux split-window -v -d'
-
-# update関係
-alias sad='sudo apt update'
-alias sag='sudo apt upgrade -y'
-alias sai='sudo apt install'
-alias sar='sudo apt autoremove -y'
-alias unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
-alias aptupd='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
-alias allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && pyenv update && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es && zplug update && ~/.tmux/plugins/tpm/bin/update_plugins all'
-alias partupdate='nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es && zplug update && ~/.tmux/plugins/tpm/bin/update_plugins all'
-
-# pip関係
-alias pi='pip install'
-alias piu='pip install -U'
-alias pip-upgrade-all="pip list -o | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
-
-# git関係
-alias g='git'
-alias gaa='git add --all'
-alias gcm='git commit -m'
-alias gac='git add --all && git commit -m'
-alias gp='git push origin HEAD'
-alias gg='git graph'
-
-# docker 関係
-alias d='docker'
-
-# vim, neovim関係
 alias nv='nvim'
-alias envim='nvim ~/.config/nvim/init.vim'
-
-# ウィンドウのプロパティ値の取得コマンド
-alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
 
 #------------ranger
 function ranger-cd {
@@ -121,6 +79,29 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+function fzf-history-selection() {
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | fzf-tmux -p --reverse --height 40%`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N fzf-history-selection
+bindkey '^H' fzf-history-selection
+
+## tmux window switcher
+function tmux-window-switcher () {
+    local window="$(tmux list-windows -a -F '#S:#W' | fzf-tmux -p --height 40% --reverse | awk '{print $1}')"
+
+    if [ -n "$window" ]; then
+      session_name="${window%%:*}"
+      window_name="${window#*:}"
+
+      BUFFER="tmux switch-client -t $session_name && tmux select-window -t $window_name"
+      zle accept-line
+    fi
+}
+zle -N tmux-window-switcher
+bindkey '^w' tmux-window-switcher
+
 #------------export
 export LANGUAGE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
@@ -140,33 +121,11 @@ export TERM='screen-256color'
 export PYENV_PATH=$HOME/.pyenv
 
 export PATH="/usr/local/cuda/bin:$PATH"
+export PATH=$PATH:$HOME/.local/bin
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 set termguicolors
 
-#------------zplug
-source ~/.zplug/init.zsh
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug 'mafredri/zsh-async', from:github
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "chrissicool/zsh-256color"
-zplug "b4b4r07/enhancd", use:init.sh
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme, at:main
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug 'yonchu/zsh-python-prompt'
-zplug "tcnksm/docker-alias", use:zshrc
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug load --verbose > /dev/null
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]] && zcompile ~/.zshrc

@@ -1,0 +1,57 @@
+# misc
+abbr rm='rm -i'
+abbr mv='mv -i'
+abbr cp='cp -i'
+abbr rmrf='rm -rf'
+abbr mkdir='mkdir -p'
+
+# ranger-cd
+abbr rc='ranger-cd'
+
+# zsh関係
+abbr ez='nvim ~/.zshrc'
+abbr sz='source ~/.zshrc'
+
+# tmux関係
+abbr et='nvim ~/.tmux.conf'
+abbr ide='tmux split-window -h -d -p 66 && tmux split-window -v -d'
+
+# update関係
+abbr sad='sudo apt update'
+abbr sag='sudo apt upgrade -y'
+abbr sai='sudo apt install'
+abbr sar='sudo apt autoremove -y'
+abbr unlock='sudo rm /var/lib/apt/lists/lock & sudo rm /var/lib/dpkg/lock'
+abbr aptupd='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
+abbr allupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && pyenv update && nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es && sheldon lock --update && ~/.tmux/plugins/tpm/bin/update_plugins all'
+abbr partupdate='nvim -N -u ~/.config/nvim/init.vim -c "try | call dein#update() | finally | qall! | endtry" -V1 -es && sheldon lock --update && ~/.tmux/plugins/tpm/bin/update_plugins all'
+
+# pip関係
+abbr pi='pip install'
+abbr piu='pip install -U'
+abbr pip-upgrade-all="pip list -o | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
+
+# git関係
+abbr g='git'
+abbr g b=branch
+abbr g s=status
+abbr gaa='git add --all'
+abbr gcm='git commit -m'
+abbr gac='git add --all && git commit -m'
+abbr gp='git push origin HEAD'
+abbr gg='git graph'
+
+# docker関係
+abbr d='docker'
+
+# vim, neovim関係
+abbr envim='nvim ~/.config/nvim/init.vim'
+
+# ウィンドウのプロパティ値の取得コマンド
+abbr xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
+
+# upstairs
+abbr ...='../..'
+abbr ....='../../..'
+abbr .....='../../../..'
+abbr ......='../../../../..'
